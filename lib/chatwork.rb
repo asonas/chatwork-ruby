@@ -9,7 +9,7 @@ module ChatWork
 
   class << self
     def client
-      @client ||= Cluent.new(@api_key, @api_base, @api_version)
+      @client ||= Client.new(@api_key, @api_base, @api_version)
     end
 
     def api_base=(new_value)
