@@ -18,7 +18,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require "chatwork"
+
+# Create message
+ChatWork.api_key = "XXX"
+ChatWork::Message.create(room_id: 1234, body: "Hello, ChatWork!")
+```
 
 ## Contributing
 
