@@ -1,13 +1,13 @@
 module ChatWork
-  class Room < Entity
+  class Message < Entity
     install_class_operations :create
 
     def self.path
-      "/rooms"
+      "/rooms/%d/messages"
     end
 
     def path
-      "/rooms"
+      "/rooms/%d/messages"
     end
   end
 end

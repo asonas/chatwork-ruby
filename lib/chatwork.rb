@@ -6,6 +6,9 @@ module ChatWork
   autoload(:ChatWorkError, 'chatwork/chatwork_error')
   autoload(:APIConnectionError, 'chatwork/chatwork_error')
   autoload(:APIError, 'chatwork/chatwork_error')
+  autoload(:Room, 'chatwork/room')
+  autoload(:Entity, 'chatwork/entity')
+  autoload(:Message, 'chatwork/message')
 
   @api_base = 'https://api.chatwork.com/'
   @api_version = '/v1'

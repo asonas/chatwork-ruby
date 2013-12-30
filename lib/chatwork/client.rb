@@ -6,10 +6,10 @@ module ChatWork
     def initialize(api_key, api_base, api_version)
       default_header = {
         'X-ChatWorkToken' => api_key,
-        'User-Agent' => 'ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}'
+        'User-Agent' => "ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}"
       }
 
-      @conn = Faraday.new(api_base, headers: default_header) do |builder|
+      @conn = Faraday.new("#{api_base}#{api_version}", headers: default_header) do |builder|
         builder.request :url_encoded
         builder.adapter Faraday.default_adapter
       end
