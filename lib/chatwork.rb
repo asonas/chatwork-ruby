@@ -2,6 +2,10 @@ require "chatwork/version"
 
 module ChatWork
   autoload(:Client, 'chatwork/client')
+  autoload(:Operations, 'chatwork/operations')
+  autoload(:ChatWorkError, 'chatwork/chatwork_error')
+  autoload(:APIConnectionError, 'chatwork/chatwork_error')
+  autoload(:APIError, 'chatwork/chatwork_error')
 
   @api_base = 'https://api.chatwork.com/'
   @api_version = '/v1'
