@@ -2,6 +2,15 @@ module ChatWork
   module Operations
     def install_class_operations(*operations)
       define_create if operations.include?(:create)
+      define_get if operations.include?(:get)
+    end
+
+    def define_get
+      instance_eval do
+        def get(params = {})
+          convert(ChatWork.client.get(path, params))
+        end
+      end
     end
 
     def define_create
