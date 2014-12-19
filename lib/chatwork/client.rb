@@ -18,6 +18,8 @@ module ChatWork
 
     def handle_response(response)
       case response.status
+      when 204
+        ChatWork::ChatWorkError.from_response(response.status, response.body)
       when 200..299
         begin
           JSON.parse(response.body)

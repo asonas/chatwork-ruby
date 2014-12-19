@@ -10,6 +10,7 @@ module ChatWork
   autoload(:Entity, 'chatwork/entity')
   autoload(:Message, 'chatwork/message')
   autoload(:Me, 'chatwork/me')
+  autoload(:Task, 'chatwork/task')
 
   @api_base = 'https://api.chatwork.com/'
   @api_version = '/v1'

@@ -3,13 +3,15 @@ module ChatWork
   class ChatWorkError < StandardError
 
     def self.from_response(status, body)
+      # HTTP status 204 don't have body.
+      return APIError.new(status, "") if status == 204
+
       hash =
         begin
           JSON.load(body)
         rescue JSON::ParserError => e
           return ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{body}", e)
         end
-
       unless hash['errors']
         return APIConnectionError.new("Invalid response #{body}")
       end
