@@ -8,7 +8,8 @@ module ChatWork
     def define_get
       instance_eval do
         def get(params = {})
-          convert(ChatWork.client.get(path, params))
+          assign_path = parse_if_hash_key_exists(path, params, :room_id)
+          convert(ChatWork.client.get(assign_path, params))
         end
       end
     end
@@ -18,13 +19,18 @@ module ChatWork
         def create(params = {})
           # TODO: Consider other pattern
           # /rooms and /rooms/:room_id
-          assign_path = if params.include?(:room_id)
-            path % params.delete(:room_id)
-          else
-            path
-          end
+          assign_path = parse_if_hash_key_exists(path, params, :room_id)
           convert(ChatWork.client.post(assign_path, params))
         end
+      end
+    end
+
+    private
+    def parse_if_hash_key_exists(string, hash, key)
+      if hash.include?(key)
+        string % hash.delete(key)
+      else
+        string
       end
     end
   end
