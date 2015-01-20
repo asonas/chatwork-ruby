@@ -8,7 +8,8 @@ module ChatWork
     def define_get
       instance_eval do
         def get(params = {})
-          convert(ChatWork.client.get(path, params))
+          assign_path = parse_if_hash_key_exists(path, params, :room_id)
+          convert(ChatWork.client.get(assign_path, params))
         end
       end
     end
