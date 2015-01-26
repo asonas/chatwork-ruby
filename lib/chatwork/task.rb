@@ -1,13 +1,9 @@
 module ChatWork
   class Task < Entity
-    install_class_operations :get
+    install_class_operations :get, :create
 
     def self.path
-      "/my/tasks"
-    end
-
-    def path
-      "/my/tasks"
+      "/rooms/%d/tasks"
     end
   end
 end

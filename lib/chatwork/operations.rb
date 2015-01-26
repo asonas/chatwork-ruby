@@ -1,5 +1,9 @@
 module ChatWork
   module Operations
+    ACCEPT_PARAMS_ID = %i(file_id task_id message_id)
+
+    attr_accessor :assign_path
+
     def install_class_operations(*operations)
       define_create if operations.include?(:create)
       define_get if operations.include?(:get)
@@ -8,8 +12,9 @@ module ChatWork
     def define_get
       instance_eval do
         def get(params = {})
-          assign_path = parse_if_hash_key_exists(path, params, :room_id)
-          convert(ChatWork.client.get(assign_path, params))
+          @assign_path = parse_if_hash_key_exists(path, params, :room_id)
+          attach_nested_resource_id(params)
+          convert(ChatWork.client.get(@assign_path, params))
         end
       end
     end
@@ -17,10 +22,9 @@ module ChatWork
     def define_create
       instance_eval do
         def create(params = {})
-          # TODO: Consider other pattern
-          # /rooms and /rooms/:room_id
-          assign_path = parse_if_hash_key_exists(path, params, :room_id)
-          convert(ChatWork.client.post(assign_path, params))
+          @assign_path = parse_if_hash_key_exists(path, params, :room_id)
+          attach_nested_resource_id(params)
+          convert(ChatWork.client.post(@assign_path, params))
         end
       end
     end
@@ -31,6 +35,13 @@ module ChatWork
         string % hash.delete(key)
       else
         string
+      end
+    end
+
+    def attach_nested_resource_id(params)
+      ACCEPT_PARAMS_ID.each do |id_name|
+        next unless params.include? id_name
+        @assign_path += "/#{params.delete(id_name)}"
       end
     end
   end
