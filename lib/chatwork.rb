@@ -21,7 +21,7 @@ module ChatWork
 
   class << self
     def client
-      @client ||= Client.new(@api_key, @api_base, @api_version)
+      @client ||= Client.new(api_key, api_base, api_version)
     end
 
     def api_base=(new_value)
@@ -40,6 +40,10 @@ module ChatWork
 
     def api_key
       @api_key || ENV['CHATWORK_API_TOKEN']
+    end
+
+    def api_version
+      @api_version
     end
   end
 end
