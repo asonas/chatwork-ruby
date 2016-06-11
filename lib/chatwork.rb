@@ -17,7 +17,7 @@ module ChatWork
 
   @api_base = 'https://api.chatwork.com/'
   @api_version = '/v1'
-  @api_key = nil
+  @api_key = ENV['CHATWORK_API_TOKEN']
 
   class << self
     def client
