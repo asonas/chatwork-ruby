@@ -26,7 +26,16 @@ describe ChatWork do
   end
 
   describe '#api_key' do
-    subject { super().api_key }
-    it { should be_nil }
+    context 'when does not set env' do
+      subject { super().api_key }
+      it { should be_nil }
+    end
+
+    context 'when sets env' do
+      let(:test_token) { 'chatwork_test_token' }
+      before { ENV['CHATWORK_API_TOKEN'] = test_token }
+      subject { super().api_key }
+      it { is_expected.to eq test_token }
+    end
   end
 end
