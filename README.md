@@ -18,13 +18,24 @@ Or install it yourself as:
 
 ## Usage
 
-```
+``` ruby
 require "chatwork"
 
 # Create message
 ChatWork.api_key = "XXX"
 ChatWork::Message.create(room_id: 1234, body: "Hello, ChatWork!")
 ```
+
+or
+
+``` sh
+$ cat send_message.rb
+require "chatwork"
+
+ChatWork::Message.create(room_id: 1234, body: "Hello, ChatWork!")
+$ CHATWORK_API_TOKEN=xxx ruby send_message.rb
+```
+
 
 ## Contributing
 
