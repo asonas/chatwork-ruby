@@ -16,7 +16,7 @@ module ChatWork
         return APIConnectionError.new("Invalid response #{body}")
       end
 
-      APIError.new(status, hash["errors"])
+      APIError.new(status, hash['errors'])
     end
 
     attr_reader :status
@@ -44,9 +44,9 @@ module ChatWork
   class APIError < ChatWorkError
     attr_reader :errors
 
-    def initilize(message, error_response)
-      @errors = error_response["errors"]
-      super(error_response["message"], status, error_response)
+    def initialize(status, error_response)
+      @errors = error_response
+      super(error_response[0], status, error_response)
     end
   end
 end

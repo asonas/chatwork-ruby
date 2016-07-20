@@ -24,7 +24,7 @@ module ChatWork
         begin
           JSON.parse(response.body)
         rescue JSON::ParserError => e
-          raise ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}")
+          raise ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}", e)
         end
       else
         ChatWork::ChatWorkError.from_response(response.status, response.body)
