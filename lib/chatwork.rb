@@ -16,7 +16,7 @@ module ChatWork
   autoload(:Contacts, 'chatwork/contacts')
 
   @api_base = 'https://api.chatwork.com/'
-  @api_version = '/v1'
+  @api_version = '/v2'
   @api_key = nil
 
   class << self
