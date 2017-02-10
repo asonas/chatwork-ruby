@@ -38,9 +38,9 @@ module ChatWork
         rescue Faraday::Error::ClientError => e
           raise ChatWork::APIConnectionError.faraday_error(e)
         end
-        res = handle_response(response)
-        block.call(response.headers, res) if block
-        res
+        payload = handle_response(response)
+        block.call(payload, response.headers) if block
+        payload
       end
     end
   end
