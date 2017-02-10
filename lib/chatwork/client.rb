@@ -32,13 +32,15 @@ module ChatWork
     end
 
     Faraday::Connection::METHODS.each do |method|
-      define_method(method) do |url, *args|
+      define_method(method) do |url, *args, &block|
         begin
           response = @conn.__send__(method, @api_version + url, *args)
         rescue Faraday::Error::ClientError => e
           raise ChatWork::APIConnectionError.faraday_error(e)
         end
-        handle_response(response)
+        res = handle_response(response)
+        block.call(response.headers, res) if block
+        res
       end
     end
   end
