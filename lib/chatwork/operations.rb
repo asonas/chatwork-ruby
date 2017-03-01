@@ -11,20 +11,20 @@ module ChatWork
 
     def define_get
       instance_eval do
-        def get(params = {})
+        def get(params = {}, &block)
           @assign_path = parse_if_hash_key_exists(path, params, :room_id)
           attach_nested_resource_id(params)
-          convert(ChatWork.client.get(@assign_path, params))
+          convert(ChatWork.client.get(@assign_path, params, &block))
         end
       end
     end
 
     def define_create
       instance_eval do
-        def create(params = {})
+        def create(params = {}, &block)
           @assign_path = parse_if_hash_key_exists(path, params, :room_id)
           attach_nested_resource_id(params)
-          convert(ChatWork.client.post(@assign_path, params))
+          convert(ChatWork.client.post(@assign_path, params, &block))
         end
       end
     end
