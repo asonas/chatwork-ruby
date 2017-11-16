@@ -6,3 +6,4 @@ require 'chatwork'
 
 require 'rspec/its'
 require_relative './shared_stubs'
+
