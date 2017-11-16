@@ -26,7 +26,7 @@ module ChatWork
     def handle_response(response)
       case response.status
       when 204
-        ChatWork::ChatWorkError.from_response(response.status, response.body)
+        ChatWork::ChatWorkError.from_response(response.status, response.body, response.headers)
       when 200..299
         begin
           JSON.parse(response.body)
@@ -34,7 +34,7 @@ module ChatWork
           raise ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}", e)
         end
       else
-        ChatWork::ChatWorkError.from_response(response.status, response.body)
+        ChatWork::ChatWorkError.from_response(response.status, response.body, response.headers)
       end
     end
 
