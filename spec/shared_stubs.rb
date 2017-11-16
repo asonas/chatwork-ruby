@@ -2,6 +2,7 @@ require 'faraday'
 
 RSpec.shared_context "shared stubs" do
   let(:api_key) { 'api_key' }
+  let(:access_token) { nil }
   let(:api_version) { ChatWork.api_version }
   let(:api_base) { ChatWork.api_base }
 
@@ -28,7 +29,7 @@ RSpec.shared_context "shared stubs" do
 
   let(:client) {
     allow(Faraday).to receive(:new).and_return(faraday)
-    client = ChatWork::Client.new(api_key, api_base, api_version)
+    client = ChatWork::Client.new(api_key, access_token, api_base, api_version)
     client
   }
 

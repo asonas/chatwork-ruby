@@ -3,11 +3,18 @@ require 'json'
 
 module ChatWork
   class Client
-    def initialize(api_key, api_base, api_version)
+    def initialize(api_key, access_token, api_base, api_version)
       default_header = {
-        'X-ChatWorkToken' => api_key,
         'User-Agent' => "ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}"
       }
+
+      if api_key
+        default_header['X-ChatWorkToken'] = api_key
+      elsif access_token
+        default_header['Authorization'] = "Bearer #{access_token}"
+      else
+        raise "Either api_key or access_token is required"
+      end
 
       @conn = Faraday.new("#{api_base}#{api_version}", headers: default_header) do |builder|
         builder.request :url_encoded

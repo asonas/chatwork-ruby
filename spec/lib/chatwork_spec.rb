@@ -1,6 +1,11 @@
 describe ChatWork do
   describe '#client' do
     subject { super().client }
+
+    before do
+      allow(ChatWork).to receive(:api_key) { "aaaa" }
+    end
+
     it { should be_a(ChatWork::Client) }
   end
 
@@ -32,6 +37,20 @@ describe ChatWork do
       let(:test_token) { 'chatwork_test_token' }
       before { ENV['CHATWORK_API_TOKEN'] = test_token }
       subject { super().api_key }
+      it { is_expected.to eq test_token }
+    end
+  end
+
+  describe '#access_token' do
+    context 'when does not set env' do
+      subject { super().access_token }
+      it { should be_nil }
+    end
+
+    context 'when sets env' do
+      let(:test_token) { 'chatwork_test_token' }
+      before { ENV['CHATWORK_ACCESS_TOKEN'] = test_token }
+      subject { super().access_token }
       it { is_expected.to eq test_token }
     end
   end
