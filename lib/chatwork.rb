@@ -1,6 +1,7 @@
 require "chatwork/version"
 
 module ChatWork
+  autoload(:BaseClient, 'chatwork/base_client')
   autoload(:Client, 'chatwork/client')
   autoload(:Operations, 'chatwork/operations')
   autoload(:ChatWorkError, 'chatwork/chatwork_error')
