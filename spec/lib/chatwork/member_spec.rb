@@ -1,7 +1,3 @@
-require 'spec_helper'
-require 'chatwork'
-require_relative '../../shared_stubs.rb'
-
 describe ChatWork::Member do
   include_context 'shared stubs'
   describe 'get room members' do
