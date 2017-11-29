@@ -2,7 +2,7 @@ require 'json'
 module ChatWork
   class ChatWorkError < StandardError
 
-    def self.from_response(status, body)
+    def self.from_response(status, body, headers)
       # HTTP status 204 don't have body.
       return APIError.new(status, "") if status == 204
 
@@ -14,6 +14,10 @@ module ChatWork
         end
       unless hash['errors']
         return APIConnectionError.new("Invalid response #{body}")
+      end
+
+      if headers.has_key?('WWW-Authenticate')
+        return AuthenticateError.new(headers['WWW-Authenticate'], status, hash['errors'])
       end
 
       APIError.new(status, hash['errors'])
@@ -47,6 +51,20 @@ module ChatWork
     def initialize(status, error_response)
       @errors = error_response
       super(error_response[0], status, error_response)
+    end
+  end
+
+  class AuthenticateError < ChatWorkError
+    attr_reader :error, :error_description
+
+    def initialize(message, status, error_response)
+      message =~ /error="([^\"]+)"/
+      @error = Regexp.last_match(1)
+
+      message =~ /error_description="([^\"]+)"/
+      @error_description = Regexp.last_match(1)
+
+      super(message, status, error_response)
     end
   end
 end
