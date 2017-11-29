@@ -1,6 +1,3 @@
-require 'spec_helper'
-require 'chatwork'
-
 describe ChatWork do
   describe '#client' do
     subject { super().client }
