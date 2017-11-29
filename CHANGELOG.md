@@ -1,5 +1,15 @@
 # Change Log
 
+## [v0.5.0](https://github.com/asonas/chatwork-ruby/tree/v0.5.0) (2017-11-29)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.4.1...v0.5.0)
+
+**Merged pull requests:**
+
+- Support ChatWork OAuth [\#21](https://github.com/asonas/chatwork-ruby/pull/21) ([sue445](https://github.com/sue445))
+- Refactor: remove `require` in each spec file [\#20](https://github.com/asonas/chatwork-ruby/pull/20) ([sue445](https://github.com/sue445))
+- Relax rspec version [\#19](https://github.com/asonas/chatwork-ruby/pull/19) ([sue445](https://github.com/sue445))
+- Add block expression [\#16](https://github.com/asonas/chatwork-ruby/pull/16) ([yuyaan](https://github.com/yuyaan))
+
 ## [v0.4.1](https://github.com/asonas/chatwork-ruby/tree/v0.4.1) (2017-02-17)
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.4.0...v0.4.1)
 
