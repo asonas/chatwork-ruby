@@ -1,7 +1,8 @@
-# Chatwork
+# ChatWork
 
-TODO: Write a gem description
+Ruby bindings of ChatWork API
 
+[![Gem Version](https://badge.fury.io/rb/chatwork.svg)](https://badge.fury.io/rb/chatwork)
 [![Build Status](https://travis-ci.org/asonas/chatwork-ruby.svg?branch=master)](https://travis-ci.org/asonas/chatwork-ruby)
 
 ## Installation
