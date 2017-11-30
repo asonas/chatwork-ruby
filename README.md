@@ -1,6 +1,6 @@
 # Chatwork
 
-TODO: Write a gem description
+Ruby bindings of ChatWork API
 
 [![Build Status](https://travis-ci.org/asonas/chatwork-ruby.svg?branch=master)](https://travis-ci.org/asonas/chatwork-ruby)
 
