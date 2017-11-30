@@ -5,6 +5,7 @@ Ruby bindings of ChatWork API
 [![Gem Version](https://badge.fury.io/rb/chatwork.svg)](https://badge.fury.io/rb/chatwork)
 [![Build Status](https://travis-ci.org/asonas/chatwork-ruby.svg?branch=master)](https://travis-ci.org/asonas/chatwork-ruby)
 [![Coverage Status](https://coveralls.io/repos/github/asonas/chatwork-ruby/badge.svg?branch=master)](https://coveralls.io/github/asonas/chatwork-ruby)
+[![Dependency Status](https://gemnasium.com/badges/github.com/asonas/chatwork-ruby.svg)](https://gemnasium.com/github.com/asonas/chatwork-ruby)
 
 ## Installation
 
