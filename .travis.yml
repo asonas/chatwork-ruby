@@ -16,3 +16,6 @@ branches:
 matrix:
   allow_failures:
   - rvm: ruby-head
+env:
+  global:
+    secure: Ntdheemdu1GavPR/3kPfQg1tR13FTP0jE9KxsSKcG32VbIzM69l22OXXwYttFexMhA1dMNytv5bKGIszeiO+YjwzDXkcDHF7ZULc24epsGCOVfNax4g47Q+Lgt2kpAsx8V/8/SIpK7VeBhc2nPvhAKPjTZ8ddN2gLHk4wifLRFA=
