@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["asonas"]
   spec.email         = ["hzw1258@gmail.com"]
   spec.description   = %q{ChatWork is cloud-based business chat tool}
-  spec.summary       = %q{Ruby bindings of Chatwork API}
+  spec.summary       = %q{Ruby bindings of ChatWork API}
   spec.homepage      = "https://github.com/asonas/chatwork-ruby"
   spec.license       = "MIT"
 
