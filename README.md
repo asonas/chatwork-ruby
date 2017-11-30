@@ -2,6 +2,8 @@
 
 TODO: Write a gem description
 
+[![Build Status](https://travis-ci.org/asonas/chatwork-ruby.svg?branch=master)](https://travis-ci.org/asonas/chatwork-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
