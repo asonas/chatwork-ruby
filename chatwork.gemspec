@@ -6,8 +6,8 @@ require 'chatwork/version'
 Gem::Specification.new do |spec|
   spec.name          = "chatwork"
   spec.version       = ChatWork::VERSION
-  spec.authors       = ["asonas"]
-  spec.email         = ["hzw1258@gmail.com"]
+  spec.authors       = ["asonas", "sue445"]
+  spec.email         = ["hzw1258@gmail.com", "sue445@sue445.net"]
   spec.description   = %q{ChatWork is cloud-based business chat tool}
   spec.summary       = %q{Ruby bindings of ChatWork API}
   spec.homepage      = "https://github.com/asonas/chatwork-ruby"
