@@ -1,5 +1,11 @@
 # encoding: utf-8
 #
+
+if ENV["CI"]
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 $: << File.expand_path(File.join(*%w{.. .. lib}), __FILE__)
 
 require 'chatwork'
