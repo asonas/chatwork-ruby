@@ -1,4 +1,4 @@
-# Chatwork
+# ChatWork
 
 Ruby bindings of ChatWork API
 
