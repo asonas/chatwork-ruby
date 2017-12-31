@@ -4,10 +4,13 @@ rvm:
 - 2.2
 - 2.3
 - 2.4.1
+- 2.5.0
 - ruby-head
 bundler_args: "--jobs=2"
 cache: bundler
-before_install: gem install bundler -v 1.16.0
+before_install:
+- gem update --system --no-document
+- gem install bundler -v 1.16.1 --no-document
 script:
 - bundle exec rake spec
 branches:
