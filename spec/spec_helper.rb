@@ -11,5 +11,16 @@ $: << File.expand_path(File.join(*%w{.. .. lib}), __FILE__)
 require 'chatwork'
 
 require 'rspec/its'
-require_relative './shared_stubs'
+require "webmock/rspec"
+require "pry"
 
+begin
+  require "backport_dig"
+rescue LoadError
+end
+
+Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
+
+def spec_dir
+  Pathname(__dir__)
+end
