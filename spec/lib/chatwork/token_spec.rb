@@ -1,9 +1,5 @@
-require_relative '../../shared_oauth_stubs.rb'
-
 describe ChatWork::Token do
-  include_context 'shared oauth stubs'
-
-  describe '.refresh_access_token' do
+  describe '.refresh_access_token', :pending do
     subject { ChatWork::Token.refresh_access_token(refresh_token, scope) }
 
     let(:scope) { [] }
