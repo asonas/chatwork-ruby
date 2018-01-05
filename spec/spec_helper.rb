@@ -28,3 +28,9 @@ end
 def schema_file
   spec_dir.join("../api/RAML/api-ja.raml")
 end
+
+RSpec.configure do |config|
+  config.before(:suite) do
+    raise "Not found '#{schema_file}'. Please run `git submodule update --init` at first" unless schema_file.exist?
+  end
+end
