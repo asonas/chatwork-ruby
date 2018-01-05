@@ -20,7 +20,7 @@ RSpec.shared_context :api_context, type: :api do
 
   def stub_chatwork_request(verb, path, resource, status = 200)
     example = RamlParser.find_response_example(verb, resource, status)
-    raise "Not found '#{verb.to_s.upcase} #{resource} #{status}' in 'schema/api-ja.raml'" unless example
+    raise "Not found '#{verb.to_s.upcase} #{resource} #{status}' in '#{schema_file}'" unless example
 
     stub_request(verb, "https://api.chatwork.com/v2#{path}").
       with(headers: {"X-Chatworktoken"=> api_key }).
