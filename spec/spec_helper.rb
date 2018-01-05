@@ -24,3 +24,7 @@ Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
 def spec_dir
   Pathname(__dir__)
 end
+
+def schema_file
+  spec_dir.join("../api/RAML/api-ja.raml")
+end

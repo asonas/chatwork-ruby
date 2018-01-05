@@ -40,7 +40,7 @@ module RamlParser
   private_class_method :find_node
 
   def self.raml
-    @raml ||= YAML.load_file(spec_dir.join("../schema/api-ja.raml"))
+    @raml ||= YAML.load_file(schema_file)
   end
   private_class_method :raml
 end
