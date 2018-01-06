@@ -15,7 +15,7 @@ require "pry"
 
 begin
   require "backport_dig"
-rescue LoadError
+rescue LoadError # rubocop:disable Lint/HandleExceptions
 end
 
 Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
