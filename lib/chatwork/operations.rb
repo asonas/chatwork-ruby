@@ -30,6 +30,7 @@ module ChatWork
     end
 
     private
+
     def parse_if_hash_key_exists(string, hash, key)
       if hash.include?(key)
         string % hash.delete(key)
