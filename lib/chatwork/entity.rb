@@ -6,7 +6,7 @@ module ChatWork
         # not implement
         # converter = ResponseConverter.new
         # converter.convert(hash)
-        return hash
+        hash
       end
     end
 
