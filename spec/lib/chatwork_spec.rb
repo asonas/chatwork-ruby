@@ -11,6 +11,7 @@ describe ChatWork do
 
   describe '#api_base' do
     subject { super().api_base }
+
     it { should eq('https://api.chatwork.com/') }
   end
   describe '#api_base=' do
@@ -18,11 +19,13 @@ describe ChatWork do
 
     describe '#api_base' do
       subject { super().api_base }
+
       it { should eq('https://test.example.com/') }
     end
 
     describe '#api_base' do
       subject { super().api_base }
+
       it { should eq('https://test.example.com/') }
     end
   end
@@ -30,6 +33,7 @@ describe ChatWork do
   describe '#api_key' do
     context 'when does not set env' do
       subject { super().api_key }
+
       it { should be_nil }
     end
 
@@ -37,6 +41,7 @@ describe ChatWork do
       let(:test_token) { 'chatwork_test_token' }
       before { ENV['CHATWORK_API_TOKEN'] = test_token }
       subject { super().api_key }
+
       it { is_expected.to eq test_token }
     end
   end
@@ -44,6 +49,7 @@ describe ChatWork do
   describe '#access_token' do
     context 'when does not set env' do
       subject { super().access_token }
+
       it { should be_nil }
     end
 
@@ -51,6 +57,7 @@ describe ChatWork do
       let(:test_token) { 'chatwork_test_token' }
       before { ENV['CHATWORK_ACCESS_TOKEN'] = test_token }
       subject { super().access_token }
+
       it { is_expected.to eq test_token }
     end
   end
