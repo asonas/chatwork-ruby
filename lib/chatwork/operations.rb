@@ -1,6 +1,6 @@
 module ChatWork
   module Operations
-    ACCEPT_PARAMS_ID = %i(file_id task_id message_id)
+    ACCEPT_PARAMS_ID = %i(file_id task_id message_id).freeze
 
     attr_accessor :assign_path
 
