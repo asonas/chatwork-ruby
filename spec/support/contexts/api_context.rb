@@ -23,7 +23,7 @@ RSpec.shared_context :api_context, type: :api do
     raise "Not found '#{verb.to_s.upcase} #{resource} #{status}' in '#{schema_file}'" unless example
 
     stub_request(verb, "https://api.chatwork.com/v2#{path}").
-      with(headers: {"X-Chatworktoken" => api_key }).
+      with(headers: { "X-Chatworktoken" => api_key }).
       to_return(status: status, body: example.to_json, headers: response_headers)
   end
 end
