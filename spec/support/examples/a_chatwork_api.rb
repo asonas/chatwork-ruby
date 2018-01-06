@@ -1,8 +1,4 @@
-RSpec.shared_examples :a_chatwork_api do
-  let(:verb)     { raise "verb is required" }
-  let(:resource) { raise "resource is required" }
-  let(:status)   { 200 }
-
+RSpec.shared_examples :a_chatwork_api do |verb, resource, status = 200|
   it { should match_example(verb, resource, status) }
 
   it "works with block" do
