@@ -7,7 +7,7 @@ if ENV["CI"]
   Coveralls.wear!
 end
 
-$: << File.expand_path(File.join(*%w{.. .. lib}), __FILE__)
+$: << File.expand_path(File.join('..', '..', 'lib'), __FILE__)
 
 require 'chatwork'
 
