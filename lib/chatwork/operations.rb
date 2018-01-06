@@ -31,13 +31,13 @@ module ChatWork
 
     private
 
-    def parse_if_hash_key_exists(string, hash, key)
-      if hash.include?(key)
-        string % hash.delete(key)
-      else
-        string
+      def parse_if_hash_key_exists(string, hash, key)
+        if hash.include?(key)
+          string % hash.delete(key)
+        else
+          string
+        end
       end
-    end
 
     def attach_nested_resource_id(params)
       ACCEPT_PARAMS_ID.each do |id_name|
