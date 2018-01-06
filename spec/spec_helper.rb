@@ -1,15 +1,15 @@
 #
 
 if ENV["CI"]
-  require 'coveralls'
+  require "coveralls"
   Coveralls.wear!
 end
 
-$LOAD_PATH << File.expand_path(File.join('..', '..', 'lib'), __FILE__)
+$LOAD_PATH << File.expand_path(File.join("..", "..", "lib"), __FILE__)
 
-require 'chatwork'
+require "chatwork"
 
-require 'rspec/its'
+require "rspec/its"
 require "webmock/rspec"
 require "pry"
 

@@ -1,26 +1,26 @@
 require "chatwork/version"
 
 module ChatWork
-  autoload(:BaseClient, 'chatwork/base_client')
-  autoload(:Client, 'chatwork/client')
-  autoload(:OAuthClient, 'chatwork/oauth_client')
-  autoload(:Token, 'chatwork/token')
-  autoload(:Operations, 'chatwork/operations')
-  autoload(:ChatWorkError, 'chatwork/chatwork_error')
-  autoload(:APIConnectionError, 'chatwork/chatwork_error')
-  autoload(:APIError, 'chatwork/chatwork_error')
-  autoload(:Room, 'chatwork/room')
-  autoload(:Entity, 'chatwork/entity')
-  autoload(:Message, 'chatwork/message')
-  autoload(:Me, 'chatwork/me')
-  autoload(:MyTask, 'chatwork/my_task')
-  autoload(:Task, 'chatwork/task')
-  autoload(:Member, 'chatwork/member')
-  autoload(:Contacts, 'chatwork/contacts')
+  autoload(:BaseClient, "chatwork/base_client")
+  autoload(:Client, "chatwork/client")
+  autoload(:OAuthClient, "chatwork/oauth_client")
+  autoload(:Token, "chatwork/token")
+  autoload(:Operations, "chatwork/operations")
+  autoload(:ChatWorkError, "chatwork/chatwork_error")
+  autoload(:APIConnectionError, "chatwork/chatwork_error")
+  autoload(:APIError, "chatwork/chatwork_error")
+  autoload(:Room, "chatwork/room")
+  autoload(:Entity, "chatwork/entity")
+  autoload(:Message, "chatwork/message")
+  autoload(:Me, "chatwork/me")
+  autoload(:MyTask, "chatwork/my_task")
+  autoload(:Task, "chatwork/task")
+  autoload(:Member, "chatwork/member")
+  autoload(:Contacts, "chatwork/contacts")
 
-  @api_base = 'https://api.chatwork.com/'
-  @oauth_api_base = 'https://oauth.chatwork.com/'
-  @api_version = '/v2'
+  @api_base = "https://api.chatwork.com/"
+  @oauth_api_base = "https://oauth.chatwork.com/"
+  @api_version = "/v2"
   @api_key = nil
   @access_token = nil
   @client_id = nil
@@ -76,19 +76,19 @@ module ChatWork
     end
 
     def api_key
-      @api_key || ENV['CHATWORK_API_TOKEN']
+      @api_key || ENV["CHATWORK_API_TOKEN"]
     end
 
     def access_token
-      @access_token || ENV['CHATWORK_ACCESS_TOKEN']
+      @access_token || ENV["CHATWORK_ACCESS_TOKEN"]
     end
 
     def client_id
-      @client_id || ENV['CHATWORK_CLIENT_ID']
+      @client_id || ENV["CHATWORK_CLIENT_ID"]
     end
 
     def client_secret
-      @client_secret || ENV['CHATWORK_CLIENT_SECRET']
+      @client_secret || ENV["CHATWORK_CLIENT_SECRET"]
     end
 
     def api_version

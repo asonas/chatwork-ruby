@@ -1,14 +1,14 @@
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'chatwork/version'
+require "chatwork/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "chatwork"
   spec.version       = ChatWork::VERSION
   spec.authors       = ["asonas", "sue445"]
   spec.email         = ["hzw1258@gmail.com", "sue445@sue445.net"]
-  spec.description   = 'ChatWork is cloud-based business chat tool'
-  spec.summary       = 'Ruby bindings of ChatWork API'
+  spec.description   = "ChatWork is cloud-based business chat tool"
+  spec.summary       = "Ruby bindings of ChatWork API"
   spec.homepage      = "https://github.com/asonas/chatwork-ruby"
   spec.license       = "MIT"
 

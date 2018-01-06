@@ -1,4 +1,4 @@
-require 'json'
+require "json"
 module ChatWork
   class ChatWorkError < StandardError
     def self.from_response(status, body, headers)
@@ -11,15 +11,15 @@ module ChatWork
         rescue JSON::ParserError => e
           return ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{body}", e)
         end
-      unless hash['errors']
+      unless hash["errors"]
         return APIConnectionError.new("Invalid response #{body}")
       end
 
-      if headers.has_key?('WWW-Authenticate')
-        return AuthenticateError.new(headers['WWW-Authenticate'], status, hash['errors'])
+      if headers.has_key?("WWW-Authenticate")
+        return AuthenticateError.new(headers["WWW-Authenticate"], status, hash["errors"])
       end
 
-      APIError.new(status, hash['errors'])
+      APIError.new(status, hash["errors"])
     end
 
     attr_reader :status
