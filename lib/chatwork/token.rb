@@ -23,7 +23,7 @@ module ChatWork
       params[:scope] = scope.join(" ") unless scope.empty?
 
       response = ChatWork.oauth_client.post("/token", params)
-      raise response if response.kind_of?(Exception)
+      raise response if response.is_a?(Exception)
       response
     end
   end

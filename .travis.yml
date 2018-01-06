@@ -13,6 +13,7 @@ before_install:
 - gem install bundler -v 1.16.1 --no-document
 script:
 - bundle exec rake spec
+- bundle exec rubocop
 branches:
   only:
   - master

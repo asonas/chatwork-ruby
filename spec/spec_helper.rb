@@ -1,22 +1,21 @@
-# encoding: utf-8
 #
 
 if ENV["CI"]
-  require 'coveralls'
+  require "coveralls"
   Coveralls.wear!
 end
 
-$: << File.expand_path(File.join(*%w{.. .. lib}), __FILE__)
+$LOAD_PATH << File.expand_path(File.join("..", "..", "lib"), __FILE__)
 
-require 'chatwork'
+require "chatwork"
 
-require 'rspec/its'
+require "rspec/its"
 require "webmock/rspec"
 require "pry"
 
 begin
   require "backport_dig"
-rescue LoadError
+rescue LoadError # rubocop:disable Lint/HandleExceptions
 end
 
 Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }

@@ -1,6 +1,6 @@
 module ChatWork
   module Operations
-    ACCEPT_PARAMS_ID = %i(file_id task_id message_id)
+    ACCEPT_PARAMS_ID = %i[file_id task_id message_id].freeze
 
     attr_accessor :assign_path
 
@@ -30,19 +30,20 @@ module ChatWork
     end
 
     private
-    def parse_if_hash_key_exists(string, hash, key)
-      if hash.include?(key)
-        string % hash.delete(key)
-      else
-        string
-      end
-    end
 
-    def attach_nested_resource_id(params)
-      ACCEPT_PARAMS_ID.each do |id_name|
-        next unless params.include? id_name
-        @assign_path += "/#{params.delete(id_name)}"
+      def parse_if_hash_key_exists(string, hash, key)
+        if hash.include?(key)
+          string % hash.delete(key)
+        else
+          string
+        end
       end
-    end
+
+      def attach_nested_resource_id(params)
+        ACCEPT_PARAMS_ID.each do |id_name|
+          next unless params.include? id_name
+          @assign_path += "/#{params.delete(id_name)}"
+        end
+      end
   end
 end

@@ -5,7 +5,7 @@ RSpec.shared_examples :a_chatwork_api do
 
   it { should match_example(verb, resource, status) }
 
-  it "should work with block" do
+  it "works with block" do
     subject do |body, headers|
       aggregate_failures do
         expect(body).to match_example(verb, resource, status)

@@ -1,11 +1,11 @@
-require 'faraday'
-require 'json'
+require "faraday"
+require "json"
 
 module ChatWork
   class BaseClient
     def initialize(api_base, api_version, header)
       default_header = {
-        'User-Agent' => "ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}"
+        "User-Agent" => "ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}",
       }
 
       default_header.merge!(header)

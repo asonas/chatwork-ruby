@@ -43,9 +43,9 @@ RSpec.describe RamlParser do
               "avatar_image_url" => "https://example.com/ico_avatar.png",
             },
             "body" => "Hello Chatwork!",
-            "send_time" => 1384242850,
+            "send_time" => 1_384_242_850,
             "update_time" => 0,
-          }
+          },
         ]
       end
 
