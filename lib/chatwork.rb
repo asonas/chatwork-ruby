@@ -27,6 +27,12 @@ module ChatWork
   @client_secret = nil
 
   class << self
+    attr_reader :api_base
+
+    attr_reader :oauth_api_base
+
+    attr_reader :api_version
+
     def client
       @client ||= Client.new(api_key, access_token, api_base, api_version)
     end
@@ -67,10 +73,6 @@ module ChatWork
       @oauth_client = nil
     end
 
-    attr_reader :api_base
-
-    attr_reader :oauth_api_base
-
     def api_key
       @api_key || ENV["CHATWORK_API_TOKEN"]
     end
@@ -86,7 +88,5 @@ module ChatWork
     def client_secret
       @client_secret || ENV["CHATWORK_CLIENT_SECRET"]
     end
-
-    attr_reader :api_version
   end
 end
