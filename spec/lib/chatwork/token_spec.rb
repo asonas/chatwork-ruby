@@ -7,8 +7,8 @@ describe ChatWork::Token do
       allow(ChatWork).to receive(:client_secret) { client_secret }
 
       stub_request(:post, "https://oauth.chatwork.com/token").
-        with(body: {"grant_type"=>"refresh_token", "refresh_token"=>refresh_token},
-             headers: {"Authorization"=>"Basic #{signature}", "Content-Type" => "application/x-www-form-urlencoded"}).
+        with(body: {"grant_type" => "refresh_token", "refresh_token" => refresh_token},
+             headers: {"Authorization" => "Basic #{signature}", "Content-Type" => "application/x-www-form-urlencoded"}).
         to_return(status: 200, body: token.to_json, headers: { "Content-Type" => "application/json" })
     end
 
