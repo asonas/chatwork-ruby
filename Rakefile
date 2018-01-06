@@ -5,5 +5,5 @@ begin
   RSpec::Core::RakeTask.new
   task :default => :spec
 rescue
-  $stderr.puts('Install rspec')
+  warn('Install rspec')
 end
