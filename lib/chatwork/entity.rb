@@ -18,7 +18,7 @@ module ChatWork
 
     private
 
-    # not implement
+      # not implement
       def update_attributes(attributes)
         raise "unexpected object" if attributes["object"] != @attributes["object"]
         new_object = ResponseConverter.new.convert(attributes)
