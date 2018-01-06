@@ -39,11 +39,11 @@ module ChatWork
         end
       end
 
-    def attach_nested_resource_id(params)
-      ACCEPT_PARAMS_ID.each do |id_name|
-        next unless params.include? id_name
-        @assign_path += "/#{params.delete(id_name)}"
+      def attach_nested_resource_id(params)
+        ACCEPT_PARAMS_ID.each do |id_name|
+          next unless params.include? id_name
+          @assign_path += "/#{params.delete(id_name)}"
+        end
       end
-    end
   end
 end
