@@ -45,7 +45,7 @@ RSpec.describe RamlParser do
             "body" => "Hello Chatwork!",
             "send_time" => 1_384_242_850,
             "update_time" => 0,
-          }
+          },
         ]
       end
 

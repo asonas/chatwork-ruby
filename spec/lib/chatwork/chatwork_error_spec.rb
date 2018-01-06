@@ -13,7 +13,7 @@ describe ChatWork::ChatWorkError do
 
       let(:headers) do
         {
-          "WWW-Authenticate" => 'Bearer error="invalid_token", error_description="The access token expired"'
+          "WWW-Authenticate" => 'Bearer error="invalid_token", error_description="The access token expired"',
         }
       end
 
