@@ -38,10 +38,9 @@ describe ChatWork do
     end
 
     context 'when sets env' do
+      subject { super().api_key }
       let(:test_token) { 'chatwork_test_token' }
       before { ENV['CHATWORK_API_TOKEN'] = test_token }
-      subject { super().api_key }
-
       it { is_expected.to eq test_token }
     end
   end
@@ -54,10 +53,9 @@ describe ChatWork do
     end
 
     context 'when sets env' do
+      subject { super().access_token }
       let(:test_token) { 'chatwork_test_token' }
       before { ENV['CHATWORK_ACCESS_TOKEN'] = test_token }
-      subject { super().access_token }
-
       it { is_expected.to eq test_token }
     end
   end
