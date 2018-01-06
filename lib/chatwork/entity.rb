@@ -4,8 +4,8 @@ module ChatWork
       include Operations
       def convert(hash)
         # not implement
-        #converter = ResponseConverter.new
-        #converter.convert(hash)
+        # converter = ResponseConverter.new
+        # converter.convert(hash)
         return hash
       end
     end
