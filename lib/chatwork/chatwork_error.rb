@@ -7,7 +7,7 @@ module ChatWork
 
       hash =
         begin
-          JSON.load(body)
+          JSON.parse(body)
         rescue JSON::ParserError => e
           return ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{body}", e)
         end
