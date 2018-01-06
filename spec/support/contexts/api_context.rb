@@ -12,7 +12,7 @@ RSpec.shared_context :api_context, type: :api do
 
   let(:ratelimit_limit)     { 100 }
   let(:ratelimit_remaining) { 44 }
-  let(:ratelimit_reset)     { 1390941626 }
+  let(:ratelimit_reset)     { 1_390_941_626 }
 
   before do
     allow(ChatWork).to receive(:api_key) { api_key }
