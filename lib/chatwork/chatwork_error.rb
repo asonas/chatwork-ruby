@@ -26,7 +26,8 @@ module ChatWork
     attr_reader :error_response
 
     def initialize(message, status = nil, error_response = nil)
-      @status, @error_response = status, error_response
+      @status = status
+      @error_response = error_response
       super(message)
     end
   end
