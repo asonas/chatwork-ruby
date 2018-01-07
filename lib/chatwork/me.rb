@@ -1,6 +1,6 @@
 module ChatWork
   class Me < Entity
-    install_class_operations :get
+    install_class_operations :_get
 
     def self.path
       "/me"

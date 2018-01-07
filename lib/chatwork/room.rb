@@ -1,6 +1,6 @@
 module ChatWork
   class Room < Entity
-    install_class_operations :create, :get
+    install_class_operations :_create, :_get
 
     def self.path
       "/rooms"
