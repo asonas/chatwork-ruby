@@ -64,4 +64,16 @@ RSpec.describe RamlParser do
       expect(subject["queryParameters"]["icon_preset"]["displayName"]).to eq "アイコン種類"
     end
   end
+
+  describe ".find_query_parameter_example" do
+    subject { RamlParser.find_query_parameter_example(verb, path) }
+
+    let(:verb) { :put }
+    let(:path) { "/rooms/{room_id}" }
+
+    its(:count)          { should eq 3 }
+    its(["name"])        { should eq "Website renewal project" }
+    its(["description"]) { should eq "group chat description" }
+    its(["icon_preset"]) { should eq "meeting" }
+  end
 end

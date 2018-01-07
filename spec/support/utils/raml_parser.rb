@@ -33,6 +33,33 @@ module RamlParser
     nil
   end
 
+  def self.find_query_parameter_example(verb, path)
+    resource = find_resource(verb, path)
+    return nil unless resource
+
+    parameter_example = {}
+
+    if resource["queryParameters"]
+      resource["queryParameters"].each do |name, value|
+        parameter_example[name] = value["example"]
+      end
+    end
+
+    if resource["is"]
+      resource["is"].each do |trait_name|
+        trait = find_trait(trait_name)
+        next unless trait
+        next unless trait["queryParameters"]
+
+        trait["queryParameters"].each do |name, value|
+          parameter_example[name] = value["example"]
+        end
+      end
+    end
+
+    parameter_example
+  end
+
   def self.find_node(elements)
     elements = Array(elements)
     raml.dig(*elements)
