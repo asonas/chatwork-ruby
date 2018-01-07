@@ -35,7 +35,7 @@ module RamlParser
 
   def self.find_query_parameter_example(verb, path)
     resource = find_resource(verb, path)
-    return nil unless resource
+    return {} unless resource
 
     parameter_example = {}
 
