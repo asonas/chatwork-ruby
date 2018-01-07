@@ -76,4 +76,21 @@ RSpec.describe RamlParser do
     its(["description"]) { should eq "group chat description" }
     its(["icon_preset"]) { should eq "meeting" }
   end
+
+  describe ".raml" do
+    subject { RamlParser.raml }
+
+    before do
+      RamlParser.instance_variable_set(:@raml, nil)
+    end
+
+    after do
+      RamlParser.instance_variable_set(:@raml, nil)
+    end
+
+    it "3 digit number can be read as a string" do
+      comma_separated_integer_list = subject["traits"][0]["room_members"]["queryParameters"]["members_admin_ids"]["example"]
+      expect(comma_separated_integer_list).to eq "123,542,1001"
+    end
+  end
 end
