@@ -33,6 +33,33 @@ module RamlParser
     nil
   end
 
+  def self.find_query_parameter_example(verb, path)
+    resource = find_resource(verb, path)
+    return {} unless resource
+
+    parameter_example = {}
+
+    if resource["queryParameters"]
+      resource["queryParameters"].each do |name, value|
+        parameter_example[name] = value["example"]
+      end
+    end
+
+    if resource["is"]
+      resource["is"].each do |trait_name|
+        trait = find_trait(trait_name)
+        next unless trait
+        next unless trait["queryParameters"]
+
+        trait["queryParameters"].each do |name, value|
+          parameter_example[name] = value["example"]
+        end
+      end
+    end
+
+    parameter_example
+  end
+
   def self.find_node(elements)
     elements = Array(elements)
     raml.dig(*elements)
@@ -40,7 +67,13 @@ module RamlParser
   private_class_method :find_node
 
   def self.raml
-    @raml ||= YAML.load_file(schema_file)
+    return @raml if @raml
+
+    yaml_data = schema_file.read
+
+    # e.g. example: 123,542,1001 -> example: '123,542,1001'
+    yaml_data.gsub!(/example: ([0-9,]+)/) { "example: '#{Regexp.last_match(1)}'" }
+
+    @raml = YAML.safe_load(yaml_data)
   end
-  private_class_method :raml
 end

@@ -8,9 +8,6 @@ describe ChatWork::Member do
       stub_chatwork_request(:get, "/rooms/#{room_id}/members", "/rooms/{room_id}/members")
     end
 
-    it_behaves_like :a_chatwork_api do
-      let(:verb)     { :get }
-      let(:resource) { "/rooms/{room_id}/members" }
-    end
+    it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/members"
   end
 end

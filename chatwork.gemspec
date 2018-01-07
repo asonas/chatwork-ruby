@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "faraday", "~> 0.9"
 
+  spec.add_development_dependency "activesupport"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "onkcop", "0.52.1.0"
