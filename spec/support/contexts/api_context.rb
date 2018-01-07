@@ -24,12 +24,18 @@ RSpec.shared_context :api_context, type: :api do
 
     request_options = { headers: { "X-Chatworktoken" => api_key } }
 
-    if [:post, :put].include?(expected_verb)
-      query_example = RamlParser.find_query_parameter_example(expected_verb, resource_path)
-      request_options[:body] = query_example unless query_example.empty?
+    query_example = RamlParser.find_query_parameter_example(expected_verb, resource_path)
+    unless query_example.empty?
+      case expected_verb
+      when :get
+        query_string = "?" + query_example.to_query
+      when :post, :put
+        request_options[:headers]["Content-Type"] = "application/x-www-form-urlencoded"
+        request_options[:body] = query_example
+      end
     end
 
-    stub_request(expected_verb, "https://api.chatwork.com/v2#{expected_path}").
+    stub_request(expected_verb, "https://api.chatwork.com/v2#{expected_path}#{query_string}").
       with(request_options).
       to_return(status: status, body: example.to_json, headers: response_headers)
   end
