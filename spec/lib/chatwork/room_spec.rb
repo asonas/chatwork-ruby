@@ -5,7 +5,7 @@ describe ChatWork::Room do
     let(:room_id) { 123 }
 
     before do
-      stub_chatwork_request(:get, "/rooms", "/rooms")
+      stub_chatwork_request(:get, "/rooms")
     end
 
     it_behaves_like :a_chatwork_api, :get, "/rooms"
@@ -31,7 +31,7 @@ describe ChatWork::Room do
     let(:name)                 { "Website renewal project" }
 
     before do
-      stub_chatwork_request(:post, "/rooms", "/rooms")
+      stub_chatwork_request(:post, "/rooms")
     end
 
     it_behaves_like :a_chatwork_api, :post, "/rooms"

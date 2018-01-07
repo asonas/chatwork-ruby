@@ -3,7 +3,7 @@ describe ChatWork::Contacts do
     subject { ChatWork::Contacts.get }
 
     before do
-      stub_chatwork_request(:get, "/contacts", "/contacts")
+      stub_chatwork_request(:get, "/contacts")
     end
 
     it_behaves_like :a_chatwork_api, :get, "contacts"

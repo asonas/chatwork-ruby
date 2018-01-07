@@ -18,7 +18,8 @@ RSpec.shared_context :api_context, type: :api do
     allow(ChatWork).to receive(:api_key) { api_key }
   end
 
-  def stub_chatwork_request(expected_verb, expected_path, resource_path, status = 200)
+  def stub_chatwork_request(expected_verb, expected_path, resource_path = nil, status = 200)
+    resource_path ||= expected_path
     example = RamlParser.find_response_example(expected_verb, resource_path, status)
     raise "Not found '#{expected_verb.to_s.upcase} #{resource_path} #{status}' in '#{schema_file}'" unless example
 

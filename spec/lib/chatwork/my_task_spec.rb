@@ -11,7 +11,7 @@ describe ChatWork::MyTask do
     let(:status)                 { "done" }
 
     before do
-      stub_chatwork_request(:get, "/my/tasks", "/my/tasks")
+      stub_chatwork_request(:get, "/my/tasks")
     end
 
     it_behaves_like :a_chatwork_api, :get, "/my/tasks"
