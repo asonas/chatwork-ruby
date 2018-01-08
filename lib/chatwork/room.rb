@@ -94,5 +94,18 @@ module ChatWork
     def self.find(room_id:)
       _get("/rooms/#{room_id}")
     end
+
+    # Change the title and icon type of the specified chat
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id
+    #
+    # @param room_id [Integer]
+    # @param description [String] Description of the group chat
+    # @param icon_preset [String] Type of the group chat icon (group, check, document, meeting, event, project, business,
+    #                             study, security, star, idea, heart, magcup, beer, music, sports, travel)
+    # @param name [String] Title of the group chat.
+    def self.update(room_id:, description: nil, icon_preset: nil, name: nil)
+      _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name)
+    end
   end
 end

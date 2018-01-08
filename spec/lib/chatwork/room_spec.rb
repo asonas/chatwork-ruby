@@ -59,4 +59,26 @@ describe ChatWork::Room do
 
     it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}"
   end
+
+  describe ".update", type: :api do
+    subject do
+      ChatWork::Room.update(
+        room_id:     room_id,
+        description: description,
+        icon_preset: icon_preset,
+        name:        name,
+      )
+    end
+
+    let(:room_id)     { 123 }
+    let(:description) { "group chat description" }
+    let(:icon_preset) { "meeting" }
+    let(:name)        { "Website renewal project" }
+
+    before do
+      stub_chatwork_request(:put, "/rooms/#{room_id}", "/rooms/{room_id}")
+    end
+
+    it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}"
+  end
 end
