@@ -8,6 +8,10 @@ module ChatWork
         # converter.convert(hash)
         hash
       end
+
+      def hash_compact(hash)
+        hash.reject { |_k, v| v.nil? }
+      end
     end
 
     attr_reader :attributes

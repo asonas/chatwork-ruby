@@ -40,6 +40,20 @@ describe ChatWork::Task do
       stub_chatwork_request(:post, "/rooms/#{room_id}/tasks", "/rooms/{room_id}/tasks")
     end
 
-    it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/tasks"
+    context "when to_ids and limit are String" do
+      it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/tasks"
+    end
+
+    context "when to_ids is Array" do
+      let(:to_ids) { [1, 3, 6] }
+
+      it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/tasks"
+    end
+
+    context "when limit is Time" do
+      let(:limit) { Time.at(1_385_996_399) }
+
+      it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/tasks"
+    end
   end
 end

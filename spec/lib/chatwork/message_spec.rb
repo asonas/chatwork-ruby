@@ -3,13 +3,22 @@ describe ChatWork::Message do
     subject { ChatWork::Message.get(room_id: room_id, force: force) }
 
     let(:room_id) { 123 }
-    let(:force)   { 0 }
 
     before do
       stub_chatwork_request(:get, "/rooms/#{room_id}/messages", "/rooms/{room_id}/messages")
     end
 
-    it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/messages"
+    context "when force is Integer" do
+      let(:force) { 0 }
+
+      it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/messages"
+    end
+
+    context "when force is boolean" do
+      let(:force) { false }
+
+      it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/messages"
+    end
   end
 
   describe ".create", type: :api do

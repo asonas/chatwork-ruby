@@ -5,13 +5,13 @@ module ChatWork
     attr_accessor :assign_path
 
     def install_class_operations(*operations)
-      define_create if operations.include?(:create)
-      define_get if operations.include?(:get)
+      define_create if operations.include?(:_create)
+      define_get if operations.include?(:_get)
     end
 
     def define_get
       instance_eval do
-        def get(params = {}, &block)
+        def _get(params = {}, &block)
           @assign_path = parse_if_hash_key_exists(path, params, :room_id)
           attach_nested_resource_id(params)
           convert(ChatWork.client.get(@assign_path, params, &block))
@@ -21,7 +21,7 @@ module ChatWork
 
     def define_create
       instance_eval do
-        def create(params = {}, &block)
+        def _create(params = {}, &block)
           @assign_path = parse_if_hash_key_exists(path, params, :room_id)
           attach_nested_resource_id(params)
           convert(ChatWork.client.post(@assign_path, params, &block))
