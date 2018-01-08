@@ -8,6 +8,6 @@ RSpec::Matchers.define :match_example do |verb, resource, status = 200|
 
   description do
     expected_example = RamlParser.find_response_example(verb, resource, status)
-    "match #{expected_example}"
+    "match '#{expected_example}'"
   end
 end

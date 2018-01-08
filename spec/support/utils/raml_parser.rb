@@ -10,7 +10,7 @@ module RamlParser
     return nil unless resource
 
     response_json = resource.dig("responses", status, "body", "application/json", "example")
-    return JSON.parse(response_json) if response_json
+    return parse_response(response_json) if response_json
 
     return nil unless resource["is"]
 
@@ -19,7 +19,7 @@ module RamlParser
       next unless trait
 
       response_json = trait.dig("responses", status, "body", "application/json", "example")
-      return JSON.parse(response_json) if response_json
+      return parse_response(response_json) if response_json
     end
 
     nil
@@ -76,4 +76,11 @@ module RamlParser
 
     @raml = YAML.safe_load(yaml_data)
   end
+
+  def self.parse_response(response_json)
+    JSON.parse(response_json)
+  rescue JSON::ParserError
+    response_json
+  end
+  private_class_method :parse_response
 end

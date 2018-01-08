@@ -107,5 +107,15 @@ module ChatWork
     def self.update(room_id:, description: nil, icon_preset: nil, name: nil)
       _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name)
     end
+
+    # Leave/Delete a group chat
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#DELETE-rooms-room_id
+    #
+    # @param room_id [Integer]
+    # @param action_type [String] leave from a room or delete a room (leave, delete)
+    def self.destroy(room_id:, action_type:)
+      _delete("/rooms/#{room_id}", action_type: action_type)
+    end
   end
 end
