@@ -11,6 +11,7 @@ module ChatWork
   autoload :Me,                 "chatwork/me"
   autoload :Member,             "chatwork/member"
   autoload :Message,            "chatwork/message"
+  autoload :MyStatus,           "chatwork/my_status"
   autoload :MyTask,             "chatwork/my_task"
   autoload :OAuthClient,        "chatwork/oauth_client"
   autoload :Room,               "chatwork/room"
