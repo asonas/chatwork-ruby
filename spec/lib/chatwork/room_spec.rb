@@ -23,17 +23,28 @@ describe ChatWork::Room do
       )
     end
 
-    let(:description)          { "group chat description" }
-    let(:icon_preset)          { "meeting" }
-    let(:members_admin_ids)    { "123,542,1001" }
-    let(:members_member_ids)   { "21,344" }
-    let(:members_readonly_ids) { "15,103" }
-    let(:name)                 { "Website renewal project" }
+    let(:description) { "group chat description" }
+    let(:icon_preset) { "meeting" }
+    let(:name)        { "Website renewal project" }
 
     before do
       stub_chatwork_request(:post, "/rooms")
     end
 
-    it_behaves_like :a_chatwork_api, :post, "/rooms"
+    context "with String" do
+      let(:members_admin_ids)    { "123,542,1001" }
+      let(:members_member_ids)   { "21,344" }
+      let(:members_readonly_ids) { "15,103" }
+
+      it_behaves_like :a_chatwork_api, :post, "/rooms"
+    end
+
+    context "with Array" do
+      let(:members_admin_ids)    { [123, 542, 1001] }
+      let(:members_member_ids)   { [21, 344] }
+      let(:members_readonly_ids) { [15, 103] }
+
+      it_behaves_like :a_chatwork_api, :post, "/rooms"
+    end
   end
 end
