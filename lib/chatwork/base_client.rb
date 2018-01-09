@@ -29,7 +29,7 @@ module ChatWork
           raise ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}", e)
         end
       else
-        ChatWork::ChatWorkError.from_response(response.status, response.body, response.headers)
+        raise ChatWork::ChatWorkError.from_response(response.status, response.body, response.headers)
       end
     end
 
