@@ -60,7 +60,7 @@ module ChatWork
     # Mark messages as read
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-read
-    # 
+    #
     # @param room_id [Integer]
     # @param message_id [String]
     #
@@ -73,6 +73,24 @@ module ChatWork
     #   }
     def self.read(room_id:, message_id: nil)
       _put("/rooms/#{room_id}/messages/read", message_id: message_id)
+    end
+
+    # Mark messages as unread
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-unread
+    #
+    # @param room_id [Integer]
+    # @param message_id [String]
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "unread_num": 3,
+    #     "mention_num": 0
+    #   }
+    def self.unread(room_id:, message_id:)
+      _put("/rooms/#{room_id}/messages/unread", message_id: message_id)
     end
   end
 end
