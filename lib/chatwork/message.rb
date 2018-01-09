@@ -56,5 +56,23 @@ module ChatWork
     def self.create(room_id:, body:)
       _post("/rooms/#{room_id}/messages", body: body)
     end
+
+    # Mark messages as read
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-read
+    # 
+    # @param room_id [Integer]
+    # @param message_id [String]
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "unread_num": 461,
+    #     "mention_num": 0
+    #   }
+    def self.read(room_id:, message_id: nil)
+      _put("/rooms/#{room_id}/messages/read", message_id: message_id)
+    end
   end
 end

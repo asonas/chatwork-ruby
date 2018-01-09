@@ -33,4 +33,17 @@ describe ChatWork::Message do
 
     it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/messages"
   end
+
+  describe ".read", type: :api do
+    subject { ChatWork::Message.read(room_id: room_id, message_id: message_id) }
+
+    let(:room_id)    { 123 }
+    let(:message_id) { "101" }
+
+    before do
+      stub_chatwork_request(:put, "/rooms/#{room_id}/messages/read", "/rooms/{room_id}/messages/read")
+    end
+
+    it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}/messages/read"
+  end
 end
