@@ -117,5 +117,23 @@ module ChatWork
     def self.find(room_id:, message_id:)
       _get("/rooms/#{room_id}/messages/#{message_id}")
     end
+
+    # Update the specified message
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-message_id
+    #
+    # @param room_id [Integer]
+    # @param message_id [String]
+    # @param body [String] message body
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "message_id": "1234"
+    #   }
+    def self.update(room_id:, message_id:, body:)
+      _put("/rooms/#{room_id}/messages/#{message_id}", body: body)
+    end
   end
 end
