@@ -135,5 +135,22 @@ module ChatWork
     def self.update(room_id:, message_id:, body:)
       _put("/rooms/#{room_id}/messages/#{message_id}", body: body)
     end
+
+    # Destroy the specified message
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-message_id
+    #
+    # @param room_id [Integer]
+    # @param message_id [String]
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "message_id": "1234"
+    #   }
+    def self.destroy(room_id:, message_id:)
+      _delete("/rooms/#{room_id}/messages/#{message_id}")
+    end
   end
 end

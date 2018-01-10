@@ -86,4 +86,17 @@ describe ChatWork::Message do
 
     it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}/messages/{message_id}"
   end
+
+  describe ".destroy", type: :api do
+    subject { ChatWork::Message.destroy(room_id: room_id, message_id: message_id) }
+
+    let(:room_id)    { 123 }
+    let(:message_id) { "101" }
+
+    before do
+      stub_chatwork_request(:delete, "/rooms/#{room_id}/messages/#{message_id}", "/rooms/{room_id}/messages/{message_id}")
+    end
+
+    it_behaves_like :a_chatwork_api, :delete, "/rooms/{room_id}/messages/{message_id}"
+  end
 end
