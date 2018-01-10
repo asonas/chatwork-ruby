@@ -92,5 +92,30 @@ module ChatWork
     def self.unread(room_id:, message_id:)
       _put("/rooms/#{room_id}/messages/unread", message_id: message_id)
     end
+
+    # Get information about the specified message
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-messages-message_id
+    #
+    # @param room_id [Integer]
+    # @param message_id [String]
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "message_id": "5",
+    #     "account": {
+    #       "account_id": 123,
+    #       "name": "Bob",
+    #       "avatar_image_url": "https://example.com/ico_avatar.png"
+    #     },
+    #     "body": "Hello Chatwork!",
+    #     "send_time": 1384242850,
+    #     "update_time": 0
+    #   }
+    def self.find(room_id:, message_id:)
+      _get("/rooms/#{room_id}/messages/#{message_id}")
+    end
   end
 end

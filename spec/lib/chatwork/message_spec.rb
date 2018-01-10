@@ -59,4 +59,17 @@ describe ChatWork::Message do
 
     it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}/messages/unread"
   end
+
+  describe ".find", type: :api do
+    subject { ChatWork::Message.find(room_id: room_id, message_id: message_id) }
+
+    let(:room_id)    { 123 }
+    let(:message_id) { "101" }
+
+    before do
+      stub_chatwork_request(:get, "/rooms/#{room_id}/messages/#{message_id}", "/rooms/{room_id}/messages/{message_id}")
+    end
+
+    it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/messages/{message_id}"
+  end
 end
