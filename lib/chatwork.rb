@@ -8,6 +8,7 @@ module ChatWork
   autoload :Client,             "chatwork/client"
   autoload :Contacts,           "chatwork/contacts"
   autoload :EntityMethods,      "chatwork/entity_methods"
+  autoload :File,               "chatwork/file"
   autoload :Me,                 "chatwork/me"
   autoload :Member,             "chatwork/member"
   autoload :Message,            "chatwork/message"
