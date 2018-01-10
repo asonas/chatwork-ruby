@@ -9,6 +9,7 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-tasks
     #
     # @param room_id [Integer]
+    # @param account_id [Integer]
     # @param assigned_by_account_id [Integer] Account ID of the person who assigned task
     # @param status [String] Task status (open, done)
     #
