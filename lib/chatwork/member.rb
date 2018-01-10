@@ -1,6 +1,6 @@
 module ChatWork
-  class Member < Entity
-    install_class_operations :_get
+  module Member
+    extend EntityMethods
 
     # Get the list of all chat members associated with the specified chat
     #
@@ -24,11 +24,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:)
-      _get(room_id: room_id)
-    end
-
-    def self.path
-      "/rooms/%d/members"
+      _get("/rooms/#{room_id}/members")
     end
   end
 end

@@ -1,6 +1,6 @@
 module ChatWork
-  class Message < Entity
-    install_class_operations :_create, :_get
+  module Message
+    extend EntityMethods
 
     # Get all messages associated with the specified chat (returns up to 100 entries).
     #
@@ -28,7 +28,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, force: nil)
-      params = { room_id: room_id }
+      params = {}
 
       case force
       when 1, true
@@ -37,7 +37,7 @@ module ChatWork
         params[:force] = 0
       end
 
-      _get(params)
+      _get("/rooms/#{room_id}/messages", params)
     end
 
     # Add new message to the chat
@@ -54,15 +54,7 @@ module ChatWork
     #     "message_id": "1234"
     #   }
     def self.create(room_id:, body:)
-      _create(room_id: room_id, body: body)
-    end
-
-    def self.path
-      "/rooms/%d/messages"
-    end
-
-    def path
-      "/rooms/%d/messages"
+      _post("/rooms/#{room_id}/messages", body: body)
     end
   end
 end

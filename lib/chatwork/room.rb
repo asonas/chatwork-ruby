@@ -1,6 +1,6 @@
 module ChatWork
-  class Room < Entity
-    install_class_operations :_create, :_get
+  module Room
+    extend EntityMethods
 
     # Get the list of all chats on your account
     #
@@ -27,7 +27,7 @@ module ChatWork
     #     }
     #   ]
     def self.get
-      _get
+      _get("/rooms")
     end
 
     # rubocop:disable Metrics/ParameterLists
@@ -61,17 +61,9 @@ module ChatWork
       params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
       params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
 
-      _create(hash_compact(params))
+      _post("/rooms", params)
     end
 
     # rubocop:enable Metrics/ParameterLists
-
-    def self.path
-      "/rooms"
-    end
-
-    def path
-      "/rooms"
-    end
   end
 end

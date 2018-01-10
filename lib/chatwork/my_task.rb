@@ -1,6 +1,6 @@
 module ChatWork
-  class MyTask < Entity
-    install_class_operations :_get
+  module MyTask
+    extend EntityMethods
 
     # Get the list of all unfinished tasks
     #
@@ -34,20 +34,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(assigned_by_account_id: nil, status: nil)
-      params = {
-        assigned_by_account_id: assigned_by_account_id,
-        status:                 status,
-      }
-
-      _get(hash_compact(params))
-    end
-
-    def self.path
-      "/my/tasks"
-    end
-
-    def path
-      "/my/tasks"
+      _get("/my/tasks", assigned_by_account_id: assigned_by_account_id, status: status)
     end
   end
 end

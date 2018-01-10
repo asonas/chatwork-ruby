@@ -1,6 +1,6 @@
 module ChatWork
-  class Task < Entity
-    install_class_operations :_get, :_create
+  module Task
+    extend EntityMethods
 
     # Get the list of tasks associated with the specified chat
     #
@@ -35,13 +35,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, account_id:, assigned_by_account_id: nil, status: nil)
-      params = {
-        room_id:                room_id,
-        account_id:             account_id,
-        assigned_by_account_id: assigned_by_account_id,
-        status:                 status,
-      }
-      _get(hash_compact(params))
+      _get("/rooms/#{room_id}/tasks", account_id: account_id, assigned_by_account_id: assigned_by_account_id, status: status)
     end
 
     # Add a new task to the chat
@@ -61,16 +55,12 @@ module ChatWork
     #   }
     def self.create(room_id:, body:, to_ids:, limit: nil)
       params = {
-        room_id: room_id,
-        body:    body,
-        to_ids:  Array(to_ids).join(","),
+        body:   body,
+        to_ids: Array(to_ids).join(","),
       }
       params[:limit] = limit.to_i if limit
-      _create(hash_compact(params))
-    end
 
-    def self.path
-      "/rooms/%d/tasks"
+      _post("/rooms/#{room_id}/tasks", params)
     end
   end
 end
