@@ -56,4 +56,22 @@ describe ChatWork::Task do
       it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/tasks"
     end
   end
+
+  describe ".find", type: :api do
+    subject do
+      ChatWork::Task.find(
+        room_id: room_id,
+        task_id: task_id,
+      )
+    end
+
+    let(:room_id) { 123 }
+    let(:task_id) { 3 }
+
+    before do
+      stub_chatwork_request(:get, "/rooms/#{room_id}/tasks/#{task_id}", "/rooms/{room_id}/tasks/{task_id}")
+    end
+
+    it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/tasks/{task_id}"
+  end
 end

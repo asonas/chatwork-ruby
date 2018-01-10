@@ -62,5 +62,36 @@ module ChatWork
 
       _post("/rooms/#{room_id}/tasks", params)
     end
+
+    # Get information about the specified task
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-tasks-task_id
+    #
+    # @param room_id [Integer]
+    # @param task_id [Integer]
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "task_id": 3,
+    #     "account": {
+    #       "account_id": 123,
+    #       "name": "Bob",
+    #       "avatar_image_url": "https://example.com/abc.png"
+    #     },
+    #     "assigned_by_account": {
+    #       "account_id": 456,
+    #       "name": "Anna",
+    #       "avatar_image_url": "https://example.com/def.png"
+    #     },
+    #     "message_id": "13",
+    #     "body": "buy milk",
+    #     "limit_time": 1384354799,
+    #     "status": "open"
+    #   }
+    def self.find(room_id:, task_id:)
+      _get("/rooms/#{room_id}/tasks/#{task_id}")
+    end
   end
 end
