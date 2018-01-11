@@ -1,5 +1,6 @@
 require "faraday"
-require "json"
+require "faraday_middleware"
+require "hashie"
 
 module ChatWork
   class BaseClient
@@ -12,6 +13,8 @@ module ChatWork
 
       @conn = Faraday.new("#{api_base}#{api_version}", headers: default_header) do |builder|
         builder.request :url_encoded
+        builder.response :mashify
+        builder.response :json
         builder.adapter Faraday.default_adapter
       end
       @api_version = api_version
@@ -19,15 +22,8 @@ module ChatWork
 
     def handle_response(response)
       case response.status
-      when 204
-        # HTTP status 204 doesn't return json
-        response.body
       when 200..299
-        begin
-          JSON.parse(response.body)
-        rescue JSON::ParserError => e
-          raise ChatWork::APIConnectionError.new("Response JSON is broken. #{e.message}: #{response.body}", e)
-        end
+        response.body
       else
         raise ChatWork::ChatWorkError.from_response(response.status, response.body, response.headers)
       end

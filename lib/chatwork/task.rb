@@ -14,7 +14,7 @@ module ChatWork
     # @param assigned_by_account_id [Integer] Account ID of the person who assigned task
     # @param status [String] Task status (open, done)
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
@@ -50,7 +50,7 @@ module ChatWork
     # @param to_ids [Array<Integer>, String] Account ID of the person/people responsible to complete the task
     # @param limit  [Time, Integer] When the task is due
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -74,7 +74,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param task_id [Integer]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {

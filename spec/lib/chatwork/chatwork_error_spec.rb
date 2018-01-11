@@ -6,9 +6,11 @@ describe ChatWork::ChatWorkError do
       let(:status) { 401 }
 
       let(:body) do
-        <<-JSON
-          {"errors":["Invalid API Token"]}
-        JSON
+        json =
+          <<-JSON
+            {"errors":["Invalid API Token"]}
+          JSON
+        Hashie::Mash.new(JSON.parse(json))
       end
 
       let(:headers) do

@@ -7,7 +7,7 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_my.html#GET-my-status
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
