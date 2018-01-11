@@ -1,5 +1,5 @@
 module ChatWork
-  class Token
+  module Token
     # refresh access_token with refresh_token
     #
     # @param refresh_token [String]
