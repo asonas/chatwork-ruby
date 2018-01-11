@@ -92,6 +92,9 @@ ChatWork::Message.create(room_id: 1234, body: "Hello, ChatWork!")
 $ CHATWORK_CLIENT_ID=xxx CHATWORK_CLIENT_SECRET=xxx REFRESH_TOKEN=xxx ruby refresh_access_token.rb
 ```
 
+## Reference
+http://www.rubydoc.info/gems/chatwork
+
 ## Development
 ```bash
 cp .env.example .env
