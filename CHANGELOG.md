@@ -1,4 +1,26 @@
 # Change Log
+## Unreleased
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.0...master)
+
+## v0.6.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.5.0...v0.6.0)
+
+* Support all ChatWork APIs
+  * https://github.com/asonas/chatwork-ruby/pull/34
+* raise error when status 4xx and 5xx
+  * https://github.com/asonas/chatwork-ruby/pull/35
+* Returns `Hashie::Mash` instead of `Hash`
+  * https://github.com/asonas/chatwork-ruby/pull/36
+* and many refactorings!
+  * https://github.com/asonas/chatwork-ruby/pull/22
+  * https://github.com/asonas/chatwork-ruby/pull/23
+  * https://github.com/asonas/chatwork-ruby/pull/24
+  * https://github.com/asonas/chatwork-ruby/pull/25
+  * https://github.com/asonas/chatwork-ruby/pull/26
+  * https://github.com/asonas/chatwork-ruby/pull/27
+  * https://github.com/asonas/chatwork-ruby/pull/28
+  * https://github.com/asonas/chatwork-ruby/pull/29
+  * https://github.com/asonas/chatwork-ruby/pull/30
 
 ## [v0.5.0](https://github.com/asonas/chatwork-ruby/tree/v0.5.0) (2017-11-29)
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.4.1...v0.5.0)
