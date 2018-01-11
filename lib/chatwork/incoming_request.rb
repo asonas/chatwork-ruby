@@ -59,5 +59,10 @@ module ChatWork
     def self.destroy(request_id:)
       _delete("/incoming_requests/#{request_id}")
     end
+
+    class << self
+      alias_method :approve, :update
+      alias_method :decline, :destroy
+    end
   end
 end
