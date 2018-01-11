@@ -7,6 +7,7 @@ $LOAD_PATH << File.expand_path(File.join("..", "..", "lib"), __FILE__)
 
 require "chatwork"
 
+require "rspec-parameterized"
 require "rspec/its"
 require "webmock/rspec"
 require "pry"

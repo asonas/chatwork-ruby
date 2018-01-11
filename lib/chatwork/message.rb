@@ -28,16 +28,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, force: nil)
-      params = {}
-
-      case force
-      when 1, true
-        params[:force] = 1
-      when 0, false
-        params[:force] = 0
-      end
-
-      _get("/rooms/#{room_id}/messages", params)
+      _get("/rooms/#{room_id}/messages", force: boolean_to_integer(force))
     end
 
     # Add new message to the chat
