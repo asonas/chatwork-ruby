@@ -5,6 +5,7 @@ module ChatWork
     # Get the list of all chat members associated with the specified chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-members
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     #
@@ -30,6 +31,7 @@ module ChatWork
     # Change associated members of group chat at once
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-members
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param members_admin_ids [Array<Integer>, String] List of user IDs who will be given administrator permission for the group chat.

@@ -7,6 +7,7 @@ module ChatWork
     # (*This method returns up to 100 entries. We are planning to implement pagination to support larger number of data retrieval)
     #
     # @see http://developer.chatwork.com/ja/endpoint_incoming_requests.html#GET-incoming_requests
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Array<Hash>]
     #
@@ -31,6 +32,7 @@ module ChatWork
     # You can approve a contact approval request you received
     #
     # @see http://developer.chatwork.com/ja/endpoint_incoming_requests.html#PUT-incoming_requests-request_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param request_id [Integer]
     #
@@ -54,6 +56,7 @@ module ChatWork
     # You can decline a contact approval request you received
     #
     # @see http://developer.chatwork.com/ja/endpoint_incoming_requests.html#DELETE-incoming_requests-request_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param request_id [Integer]
     def self.destroy(request_id:)

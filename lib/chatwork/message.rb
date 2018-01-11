@@ -7,6 +7,7 @@ module ChatWork
     # If the parameter is not set, it returns the next 100 entries from previous call.
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-messages
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param force   [Boolean, Integer] Flag which forces to get 100 newest entries regardless of previous calls.
@@ -34,6 +35,7 @@ module ChatWork
     # Add new message to the chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-messages
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param body    [String] message body
@@ -51,6 +53,7 @@ module ChatWork
     # Mark messages as read
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-read
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param message_id [String]
@@ -69,6 +72,7 @@ module ChatWork
     # Mark messages as unread
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-unread
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param message_id [String]
@@ -87,6 +91,7 @@ module ChatWork
     # Get information about the specified message
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-messages-message_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param message_id [String]
@@ -112,6 +117,7 @@ module ChatWork
     # Update the specified message
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-message_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param message_id [String]
@@ -130,6 +136,7 @@ module ChatWork
     # Destroy the specified message
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-messages-message_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param message_id [String]

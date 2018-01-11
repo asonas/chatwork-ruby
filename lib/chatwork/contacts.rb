@@ -5,6 +5,7 @@ module ChatWork
     # Get the list of your contacts
     #
     # @see http://developer.chatwork.com/ja/endpoint_contacts.html#GET-contacts
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Array<Hash>]
     #

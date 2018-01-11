@@ -5,6 +5,7 @@ module ChatWork
     # Get the number of: unread messages, unread To messages, and unfinished tasks.
     #
     # @see http://developer.chatwork.com/ja/endpoint_my.html#GET-my-status
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Hash]
     #

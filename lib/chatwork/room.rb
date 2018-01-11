@@ -5,6 +5,7 @@ module ChatWork
     # Get the list of all chats on your account
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Array<Hash>]
     #
@@ -35,6 +36,7 @@ module ChatWork
     # Create a new group chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param description [String] Description of the group chat
     # @param icon_preset [String] Type of the group chat icon (group, check, document, meeting, event, project, business,
@@ -69,6 +71,7 @@ module ChatWork
     # Get chat name, icon, and Type (my, direct, or group)
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     #
@@ -98,6 +101,7 @@ module ChatWork
     # Change the title and icon type of the specified chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param description [String] Description of the group chat
@@ -111,6 +115,7 @@ module ChatWork
     # Leave/Delete a group chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#DELETE-rooms-room_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param action_type [String] leave from a room or delete a room (leave, delete)

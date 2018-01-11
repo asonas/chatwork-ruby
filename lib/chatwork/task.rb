@@ -7,6 +7,7 @@ module ChatWork
     # (*This method returns up to 100 entries. We are planning to implement pagination to support larger number of data retrieval)
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-tasks
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param account_id [Integer]
@@ -42,6 +43,7 @@ module ChatWork
     # Add a new task to the chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-tasks
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param body    [String] Task description
@@ -67,6 +69,7 @@ module ChatWork
     # Get information about the specified task
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-tasks-task_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param task_id [Integer]

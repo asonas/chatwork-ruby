@@ -8,6 +8,7 @@ module ChatWork
     # @param account_id [Integer]
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-files
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Array<Hash>]
     #
@@ -33,6 +34,7 @@ module ChatWork
     # Get information about the specified file
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-files-file_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
     # @param file_id [Integer]
