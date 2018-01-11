@@ -1,12 +1,13 @@
 module ChatWork
-  class MyTask < Entity
-    install_class_operations :_get
+  module MyTask
+    extend EntityMethods
 
     # Get the list of all unfinished tasks
     #
     # (*This method returns up to 100 entries. We are planning to implement pagination to support larger number of data retrieval)
     #
     # @see http://developer.chatwork.com/ja/endpoint_my.html#GET-my-tasks
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param assigned_by_account_id [Integer] Account ID of the person who assigned task
     # @param status [String] Task status (open, done)
@@ -34,20 +35,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(assigned_by_account_id: nil, status: nil)
-      params = {
-        assigned_by_account_id: assigned_by_account_id,
-        status:                 status,
-      }
-
-      _get(hash_compact(params))
-    end
-
-    def self.path
-      "/my/tasks"
-    end
-
-    def path
-      "/my/tasks"
+      _get("/my/tasks", assigned_by_account_id: assigned_by_account_id, status: status)
     end
   end
 end

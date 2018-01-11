@@ -2,9 +2,6 @@ require "json"
 module ChatWork
   class ChatWorkError < StandardError
     def self.from_response(status, body, headers)
-      # HTTP status 204 don't have body.
-      return APIError.new(status, "") if status == 204
-
       hash =
         begin
           JSON.parse(body)

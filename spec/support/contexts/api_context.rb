@@ -28,7 +28,7 @@ RSpec.shared_context :api_context, type: :api do
     query_example = RamlParser.find_query_parameter_example(expected_verb, resource_path)
     unless query_example.empty?
       case expected_verb
-      when :get
+      when :get, :delete
         query_string = "?" + query_example.to_query
       when :post, :put
         request_options[:headers]["Content-Type"] = "application/x-www-form-urlencoded"

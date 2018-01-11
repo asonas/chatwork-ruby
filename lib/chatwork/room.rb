@@ -1,10 +1,11 @@
 module ChatWork
-  class Room < Entity
-    install_class_operations :_create, :_get
+  module Room
+    extend EntityMethods
 
     # Get the list of all chats on your account
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Array<Hash>]
     #
@@ -27,7 +28,7 @@ module ChatWork
     #     }
     #   ]
     def self.get
-      _get
+      _get("/rooms")
     end
 
     # rubocop:disable Metrics/ParameterLists
@@ -35,6 +36,7 @@ module ChatWork
     # Create a new group chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param description [String] Description of the group chat
     # @param icon_preset [String] Type of the group chat icon (group, check, document, meeting, event, project, business,
@@ -61,17 +63,64 @@ module ChatWork
       params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
       params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
 
-      _create(hash_compact(params))
+      _post("/rooms", params)
     end
 
     # rubocop:enable Metrics/ParameterLists
 
-    def self.path
-      "/rooms"
+    # Get chat name, icon, and Type (my, direct, or group)
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
+    #
+    # @param room_id [Integer]
+    #
+    # @return [Hash]
+    #
+    # @example response format
+    #   {
+    #     "room_id": 123,
+    #     "name": "Group Chat Name",
+    #     "type": "group",
+    #     "role": "admin",
+    #     "sticky": false,
+    #     "unread_num": 10,
+    #     "mention_num": 1,
+    #     "mytask_num": 0,
+    #     "message_num": 122,
+    #     "file_num": 10,
+    #     "task_num": 17,
+    #     "icon_path": "https://example.com/ico_group.png",
+    #     "last_update_time": 1298905200,
+    #     "description": "room description text"
+    #   }
+    def self.find(room_id:)
+      _get("/rooms/#{room_id}")
     end
 
-    def path
-      "/rooms"
+    # Change the title and icon type of the specified chat
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
+    #
+    # @param room_id [Integer]
+    # @param description [String] Description of the group chat
+    # @param icon_preset [String] Type of the group chat icon (group, check, document, meeting, event, project, business,
+    #                             study, security, star, idea, heart, magcup, beer, music, sports, travel)
+    # @param name [String] Title of the group chat.
+    def self.update(room_id:, description: nil, icon_preset: nil, name: nil)
+      _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name)
+    end
+
+    # Leave/Delete a group chat
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#DELETE-rooms-room_id
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
+    #
+    # @param room_id [Integer]
+    # @param action_type [String] leave from a room or delete a room (leave, delete)
+    def self.destroy(room_id:, action_type:)
+      _delete("/rooms/#{room_id}", action_type: action_type)
     end
   end
 end

@@ -1,10 +1,11 @@
 module ChatWork
-  class Contacts < Entity
-    install_class_operations :_get
+  module Contacts
+    extend EntityMethods
 
     # Get the list of your contacts
     #
     # @see http://developer.chatwork.com/ja/endpoint_contacts.html#GET-contacts
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Array<Hash>]
     #
@@ -22,15 +23,7 @@ module ChatWork
     #     }
     #   ]
     def self.get
-      _get
-    end
-
-    def self.path
-      "/contacts"
-    end
-
-    def path
-      "/contacts"
+      _get("/contacts")
     end
   end
 end

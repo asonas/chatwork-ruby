@@ -1,10 +1,11 @@
 module ChatWork
-  class Me < Entity
-    install_class_operations :_get
+  module Me
+    extend EntityMethods
 
     # Get your account information
     #
     # @see http://developer.chatwork.com/ja/endpoint_me.html#GET-me
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @return [Hash]
     #
@@ -31,15 +32,7 @@ module ChatWork
     #     "login_mail": "account@example.com"
     #   }
     def self.get
-      _get
-    end
-
-    def self.path
-      "/me"
-    end
-
-    def path
-      "/me"
+      _get("/me")
     end
   end
 end

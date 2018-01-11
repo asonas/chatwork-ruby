@@ -47,4 +47,56 @@ describe ChatWork::Room do
       it_behaves_like :a_chatwork_api, :post, "/rooms"
     end
   end
+
+  describe ".find", type: :api do
+    subject { ChatWork::Room.find(room_id: room_id) }
+
+    let(:room_id) { 123 }
+
+    before do
+      stub_chatwork_request(:get, "/rooms/#{room_id}", "/rooms/{room_id}")
+    end
+
+    it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}"
+  end
+
+  describe ".update", type: :api do
+    subject do
+      ChatWork::Room.update(
+        room_id:     room_id,
+        description: description,
+        icon_preset: icon_preset,
+        name:        name,
+      )
+    end
+
+    let(:room_id)     { 123 }
+    let(:description) { "group chat description" }
+    let(:icon_preset) { "meeting" }
+    let(:name)        { "Website renewal project" }
+
+    before do
+      stub_chatwork_request(:put, "/rooms/#{room_id}", "/rooms/{room_id}")
+    end
+
+    it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}"
+  end
+
+  describe ".destroy", type: :api do
+    subject do
+      ChatWork::Room.destroy(
+        room_id:     room_id,
+        action_type: action_type,
+      )
+    end
+
+    let(:room_id)     { 123 }
+    let(:action_type) { "leave" }
+
+    before do
+      stub_chatwork_request(:delete, "/rooms/#{room_id}", "/rooms/{room_id}", 204)
+    end
+
+    it_behaves_like :a_chatwork_api, :delete, "/rooms/{room_id}", 204
+  end
 end
