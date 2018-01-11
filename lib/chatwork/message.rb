@@ -12,7 +12,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param force   [Boolean, Integer] Flag which forces to get 100 newest entries regardless of previous calls.
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
@@ -40,7 +40,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param body    [String] message body
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -58,7 +58,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -77,7 +77,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -96,7 +96,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -123,7 +123,7 @@ module ChatWork
     # @param message_id [String]
     # @param body [String] message body
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -141,7 +141,7 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {

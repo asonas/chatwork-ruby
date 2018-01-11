@@ -7,7 +7,7 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
@@ -47,7 +47,7 @@ module ChatWork
     # @param members_readonly_ids [Array<Integer>, String] List of user IDs who will be given read-only permission for the group chat.
     # @param name [String] Title of the group chat.
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
@@ -75,7 +75,7 @@ module ChatWork
     #
     # @param room_id [Integer]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {

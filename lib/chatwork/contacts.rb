@@ -7,7 +7,7 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_contacts.html#GET-contacts
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [

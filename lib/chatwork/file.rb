@@ -10,7 +10,7 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-files
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
@@ -41,7 +41,7 @@ module ChatWork
     # @param create_download_url [Boolean] whether or not to create a download link.
     #                                      If set to true, download like will be created for 30 seconds
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   {

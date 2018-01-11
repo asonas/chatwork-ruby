@@ -9,7 +9,7 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_incoming_requests.html#GET-incoming_requests
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
@@ -36,7 +36,7 @@ module ChatWork
     #
     # @param request_id [Integer]
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {

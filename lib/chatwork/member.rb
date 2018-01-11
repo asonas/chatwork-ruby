@@ -9,7 +9,7 @@ module ChatWork
     #
     # @param room_id [Integer]
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
@@ -39,7 +39,7 @@ module ChatWork
     # @param members_member_ids [Array<Integer>, String] List of user IDs who will be given member permission for the group chat.
     # @param members_readonly_ids [Array<Integer>, String] List of user IDs who will be given read-only permission for the group chat.
     #
-    # @return [Hash]
+    # @return [Hashie::Mash]
     #
     # @example response format
     # {

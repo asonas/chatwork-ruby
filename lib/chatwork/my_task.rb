@@ -12,7 +12,7 @@ module ChatWork
     # @param assigned_by_account_id [Integer] Account ID of the person who assigned task
     # @param status [String] Task status (open, done)
     #
-    # @return [Array<Hash>]
+    # @return [Array<Hashie::Mash>]
     #
     # @example response format
     #   [
