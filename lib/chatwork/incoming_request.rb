@@ -50,5 +50,14 @@ module ChatWork
     def self.update(request_id:)
       _put("/incoming_requests/#{request_id}")
     end
+
+    # You can decline a contact approval request you received
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_incoming_requests.html#DELETE-incoming_requests-request_id
+    #
+    # @param request_id [Integer]
+    def self.destroy(request_id:)
+      _delete("/incoming_requests/#{request_id}")
+    end
   end
 end
