@@ -2,7 +2,7 @@ module ChatWork
   class ChatWorkError < StandardError
     def self.from_response(status, body, headers)
       unless body["errors"]
-        return APIConnectionError.new("Invalid response #{body}")
+        return APIConnectionError.new("Invalid response #{body.to_hash}")
       end
 
       if headers.has_key?("WWW-Authenticate")
