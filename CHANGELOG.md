@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.1...master)
+
+## v0.6.1
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.0...v0.6.1)
+
+* Fixed: ArgumentError when ChatWork::Token.refresh_access_token
+  * https://github.com/asonas/chatwork-ruby/pull/39
 
 ## v0.6.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.5.0...v0.6.0)
