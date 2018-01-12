@@ -108,6 +108,13 @@ module ChatWork
     # @param icon_preset [String] Type of the group chat icon (group, check, document, meeting, event, project, business,
     #                             study, security, star, idea, heart, magcup, beer, music, sports, travel)
     # @param name [String] Title of the group chat.
+    #
+    # @return [Hashie::Mash]
+    #
+    # @example response format
+    #   {
+    #     "room_id": 1234
+    #   }
     def self.update(room_id:, description: nil, icon_preset: nil, name: nil)
       _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name)
     end
