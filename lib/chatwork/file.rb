@@ -41,7 +41,7 @@ module ChatWork
     # @param create_download_url [Boolean] whether or not to create a download link.
     #                                      If set to true, download like will be created for 30 seconds
     #
-    # @return [Array<Hashie::Mash>]
+    # @return [Hashie::Mash]
     #
     # @example response format
     #   {
