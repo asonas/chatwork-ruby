@@ -14,7 +14,6 @@ module ChatWork
     #     "refresh_token" => "refresh_token",
     #     "scope" => "users.all:read rooms.all:read_write contacts.all:read_write",
     #   }
-    #   ["access_token", "token_type", "expires_in", "refresh_token", "scope"]
     def self.refresh_access_token(refresh_token, scope = [])
       params = {
         grant_type:    "refresh_token",
@@ -22,9 +21,7 @@ module ChatWork
       }
       params[:scope] = scope.join(" ") unless scope.empty?
 
-      response = ChatWork.oauth_client.post("/token", params)
-      raise response if response.is_a?(Exception)
-      response
+      ChatWork.oauth_client.post("/token", params)
     end
   end
 end

@@ -1,6 +1,5 @@
 require "faraday"
 require "faraday_middleware"
-require "hashie"
 
 module ChatWork
   class BaseClient
