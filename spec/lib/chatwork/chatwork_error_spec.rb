@@ -1,16 +1,14 @@
 describe ChatWork::ChatWorkError do
   describe ".from_response" do
-    subject { ChatWork::ChatWorkError.from_response(status, body, headers) }
+    subject { ChatWork::ChatWorkError.from_response(status, Hashie::Mash.new(body), headers) }
 
     context "with WWW-Authenticate header" do
       let(:status) { 401 }
 
       let(:body) do
-        json =
-          <<-JSON
-            {"errors":["Invalid API Token"]}
-          JSON
-        Hashie::Mash.new(JSON.parse(json))
+        {
+          errors: ["Invalid API Token"],
+        }
       end
 
       let(:headers) do
@@ -23,6 +21,27 @@ describe ChatWork::ChatWorkError do
       its(:error) { should eq "invalid_token" }
       its(:error_description) { should eq "The access token expired" }
       its(:error_response) { should eq ["Invalid API Token"] }
+    end
+  end
+
+  describe ChatWork::AuthenticateError do
+    describe ".from_www_authenticate" do
+      subject do
+        ChatWork::AuthenticateError.from_www_authenticate(
+          www_authenticate: www_authenticate,
+          status:           status,
+          error_response:   error_response,
+        )
+      end
+
+      let(:www_authenticate) { 'Bearer error="invalid_token", error_description="The access token expired"' }
+      let(:status)           { 401 }
+      let(:error_response)   { ["Invalid API Token"] }
+
+      it { should be_an_instance_of ChatWork::AuthenticateError }
+      its(:error)             { should eq "invalid_token" }
+      its(:error_description) { should eq "The access token expired" }
+      its(:error_response)    { should eq ["Invalid API Token"] }
     end
   end
 end

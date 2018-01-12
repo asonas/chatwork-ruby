@@ -1,4 +1,5 @@
 require "chatwork/version"
+require "hashie"
 
 module ChatWork
   autoload :BaseClient,         "chatwork/base_client"
