@@ -1,10 +1,6 @@
 module ChatWork
   class ChatWorkError < StandardError
     def self.from_response(status, body, headers)
-      unless body["errors"]
-        return APIConnectionError.new("Invalid response #{body.to_hash} (status: #{status})")
-      end
-
       if headers.has_key?("WWW-Authenticate")
         return AuthenticateError.from_www_authenticate(
           www_authenticate: headers["WWW-Authenticate"],
@@ -13,7 +9,14 @@ module ChatWork
         )
       end
 
-      APIError.new(status, body["errors"])
+      return APIError.new(status, body["errors"]) if body["errors"]
+
+      if body["error"]
+        message = [body["error"], body["error_description"]].compact.join(" ")
+        return AuthenticateError.new(message, status, body, body["error"], body["error_description"])
+      end
+
+      APIConnectionError.new("Invalid response #{body.to_hash} (status: #{status})")
     end
 
     attr_reader :status

@@ -22,6 +22,26 @@ describe ChatWork::ChatWorkError do
       its(:error_description) { should eq "The access token expired" }
       its(:error_response) { should eq ["Invalid API Token"] }
     end
+
+    context "with error" do
+      let(:status) { 401 }
+
+      let(:body) do
+        {
+          error:             "invalid_client",
+          error_description: "The client ID `client_id` is unknown.",
+          error_uri:         nil,
+        }.stringify_keys
+      end
+
+      let(:headers) { {} }
+
+      it { should be_an_instance_of ChatWork::AuthenticateError }
+      its(:message)           { should eq "invalid_client The client ID `client_id` is unknown." }
+      its(:error)             { should eq "invalid_client" }
+      its(:error_description) { should eq "The client ID `client_id` is unknown." }
+      its(:error_response)    { should eq body }
+    end
   end
 
   describe ChatWork::AuthenticateError do
