@@ -32,7 +32,7 @@ RSpec.shared_context :api_context, type: :api do
         query_string = "?" + query_example.to_query
       when :post, :put
         request_options[:headers]["Content-Type"] = "application/x-www-form-urlencoded"
-        request_options[:body] = query_example
+        request_options[:body] = query_example.transform_values(&:to_s)
       end
     end
 

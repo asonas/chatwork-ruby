@@ -67,15 +67,9 @@ module RamlParser
   private_class_method :find_node
 
   def self.raml
-    return @raml if @raml
-
-    yaml_data = schema_file.read
-
-    # e.g. example: 123,542,1001 -> example: '123,542,1001'
-    yaml_data.gsub!(/example: ([0-9,]+)/) { "example: '#{Regexp.last_match(1)}'" }
-
-    @raml = YAML.safe_load(yaml_data)
+    @raml ||= YAML.load_file(schema_file)
   end
+  private_class_method :raml
 
   def self.parse_response(response_json)
     JSON.parse(response_json)
