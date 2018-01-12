@@ -29,7 +29,7 @@ module ChatWork
 
     attr_reader :original_error
 
-    def initialize(message, original_error)
+    def initialize(message, original_error = nil)
       @original_error = original_error
       super(message)
     end
