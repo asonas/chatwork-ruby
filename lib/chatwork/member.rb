@@ -42,11 +42,11 @@ module ChatWork
     # @return [Hashie::Mash]
     #
     # @example response format
-    # {
-    #   "admin": [123, 542, 1001],
-    #   "member": [10, 103],
-    #   "readonly": [6, 11]
-    # }
+    #   {
+    #     "admin": [123, 542, 1001],
+    #     "member": [10, 103],
+    #     "readonly": [6, 11]
+    #   }
     def self.update_all(room_id:, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil)
       params = {
         members_admin_ids: Array(members_admin_ids).join(","),
