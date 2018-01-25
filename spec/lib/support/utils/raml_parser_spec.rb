@@ -5,7 +5,7 @@ RSpec.describe RamlParser do
     let(:verb)   { :get }
     let(:path)   { "/rooms/{room_id}/members" }
 
-    its(["description"]) { should eq "チャットのメンバー一覧を取得\n" }
+    its(["description"]) { should eq "チャットのメンバー一覧を取得" }
     its(["is"])          { should eq ["room_member_list_response", "unauthorized_response"] }
   end
 
