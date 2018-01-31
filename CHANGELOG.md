@@ -1,6 +1,14 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.1...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.2...master)
+
+## v0.6.2
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.1...v0.6.2)
+
+* Fixed. `NoMethodError` when error response is empty
+  * https://github.com/asonas/chatwork-ruby/pull/43
+* Fixed. uninitialized constant `ChatWork::AuthenticateError` when other error class has not been called at all
+  * https://github.com/asonas/chatwork-ruby/pull/45
 
 ## v0.6.1
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.0...v0.6.1)
