@@ -1,6 +1,8 @@
 module ChatWork
   class ChatWorkError < StandardError
     def self.from_response(status, body, headers)
+      body ||= {}
+
       if headers.has_key?("WWW-Authenticate")
         return AuthenticateError.from_www_authenticate(
           www_authenticate: headers["WWW-Authenticate"],
