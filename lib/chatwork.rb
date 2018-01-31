@@ -5,6 +5,7 @@ module ChatWork
   autoload :BaseClient,         "chatwork/base_client"
   autoload :APIConnectionError, "chatwork/chatwork_error"
   autoload :APIError,           "chatwork/chatwork_error"
+  autoload :AuthenticateError,  "chatwork/chatwork_error"
   autoload :ChatWorkError,      "chatwork/chatwork_error"
   autoload :Client,             "chatwork/client"
   autoload :Contacts,           "chatwork/contacts"
