@@ -1,6 +1,8 @@
 describe ChatWork::ChatWorkError do
   describe ".from_response" do
-    subject { ChatWork::ChatWorkError.from_response(status, Hashie::Mash.new(body), headers) }
+    subject { ChatWork::ChatWorkError.from_response(status, body_mash, headers) }
+
+    let(:body_mash) { Hashie::Mash.new(body) }
 
     context "with WWW-Authenticate header" do
       let(:status) { 401 }
@@ -41,6 +43,14 @@ describe ChatWork::ChatWorkError do
       its(:error)             { should eq "invalid_client" }
       its(:error_description) { should eq "The client ID `client_id` is unknown." }
       its(:error_response)    { should eq body }
+    end
+
+    context "when body is nil" do
+      let(:status)    { 401 }
+      let(:body_mash) { nil }
+      let(:headers)   { {} }
+
+      it { should be_an_instance_of ChatWork::APIConnectionError }
     end
   end
 
