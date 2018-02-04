@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.2...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.7.0...master)
+
+## v0.7.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.2...v0.7.0)
+
+* Support Invitation Link API
+  * https://github.com/asonas/chatwork-ruby/pull/46
 
 ## v0.6.2
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.1...v0.6.2)
