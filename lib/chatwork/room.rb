@@ -46,6 +46,9 @@ module ChatWork
     # @param members_member_ids [Array<Integer>, String] List of user IDs who will be given member permission for the group chat.
     # @param members_readonly_ids [Array<Integer>, String] List of user IDs who will be given read-only permission for the group chat.
     # @param name [String] Title of the group chat.
+    # @param link [Boolean] whether create invitation link
+    # @param link_code [String] link path (default. random string)
+    # @param link_need_acceptance [Boolean] Approval necessity. Whether participation requires administrator approval.
     #
     # @return [Hashie::Mash]
     #
@@ -53,12 +56,16 @@ module ChatWork
     #   {
     #     "room_id": 1234
     #   }
-    def self.create(description: nil, icon_preset: nil, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, name:)
+    def self.create(description: nil, icon_preset: nil, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, name:,
+                    link: nil, link_code: nil, link_need_acceptance: nil)
       params = {
-        description:       description,
-        icon_preset:       icon_preset,
-        members_admin_ids: Array(members_admin_ids).join(","),
-        name:              name,
+        description:          description,
+        icon_preset:          icon_preset,
+        members_admin_ids:    Array(members_admin_ids).join(","),
+        name:                 name,
+        link:                 boolean_to_integer(link),
+        link_need_acceptance: boolean_to_integer(link_need_acceptance),
+        link_code:            link_code,
       }
       params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
       params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
