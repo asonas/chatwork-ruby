@@ -12,6 +12,7 @@ module ChatWork
   autoload :EntityMethods,      "chatwork/entity_methods"
   autoload :File,               "chatwork/file"
   autoload :IncomingRequest,    "chatwork/incoming_request"
+  autoload :InvitationLink,     "chatwork/invitation_link"
   autoload :Me,                 "chatwork/me"
   autoload :Member,             "chatwork/member"
   autoload :Message,            "chatwork/message"
