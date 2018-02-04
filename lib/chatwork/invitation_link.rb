@@ -77,5 +77,22 @@ module ChatWork
       }
       _put("/rooms/#{room_id}/link", params)
     end
+
+    # Delete invitation link
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#DELETE-rooms-room_id-link
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
+    #
+    # @param room_id [Integer]
+    #
+    # @return [Hashie::Mash]
+    #
+    # @example response format
+    #   {
+    #     "public": false
+    #   }
+    def self.destroy(room_id:)
+      _delete("/rooms/#{room_id}/link")
+    end
   end
 end
