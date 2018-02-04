@@ -20,12 +20,18 @@ describe ChatWork::Room do
         members_member_ids:   members_member_ids,
         members_readonly_ids: members_readonly_ids,
         name:                 name,
+        link:                 link,
+        link_code:            link_code,
+        link_need_acceptance: link_need_acceptance,
       )
     end
 
     let(:description) { "group chat description" }
     let(:icon_preset) { "meeting" }
     let(:name)        { "Website renewal project" }
+    let(:link)                 { false }
+    let(:link_need_acceptance) { true }
+    let(:link_code)            { nil }
 
     before do
       stub_chatwork_request(:post, "/rooms")
