@@ -32,4 +32,26 @@ describe ChatWork::InvitationLink do
 
     it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/link"
   end
+
+  describe ".update", type: :api do
+    subject do
+      ChatWork::InvitationLink.update(
+        room_id:         room_id,
+        code:            code,
+        description:     description,
+        need_acceptance: need_acceptance,
+      )
+    end
+
+    let(:room_id)         { 123 }
+    let(:code)            { "another_link_name" }
+    let(:description)     { "Public room for everybody" }
+    let(:need_acceptance) { false }
+
+    before do
+      stub_chatwork_request(:put, "/rooms/#{room_id}/link", "/rooms/{room_id}/link")
+    end
+
+    it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}/link"
+  end
 end
