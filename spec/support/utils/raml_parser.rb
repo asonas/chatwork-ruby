@@ -33,7 +33,7 @@ module RamlParser
     nil
   end
 
-  def self.find_query_parameter_example(verb, path) # rubocop:disable Metrics/MethodLength
+  def self.find_query_parameter_example(verb, path)
     resource = find_resource(verb, path)
     return {} unless resource
 
@@ -49,8 +49,7 @@ module RamlParser
     if resource["is"]
       resource["is"].each do |trait_name|
         trait = find_trait(trait_name)
-        next unless trait
-        next unless trait["queryParameters"]
+        next if !trait || !trait["queryParameters"]
 
         trait["queryParameters"].each do |name, value|
           example = find_example(value)
