@@ -41,7 +41,8 @@ module RamlParser
 
     if resource["queryParameters"]
       resource["queryParameters"].each do |name, value|
-        parameter_example[name] = value["example"]
+        example = find_example(value)
+        parameter_example[name] = example if example
       end
     end
 
@@ -52,7 +53,8 @@ module RamlParser
         next unless trait["queryParameters"]
 
         trait["queryParameters"].each do |name, value|
-          parameter_example[name] = value["example"]
+          example = find_example(value)
+          parameter_example[name] = example if example
         end
       end
     end
@@ -77,4 +79,25 @@ module RamlParser
     response_json
   end
   private_class_method :parse_response
+
+  def self.find_example(value)
+    example =
+      if value.has_key?("example")
+        value["example"]
+      elsif value.has_key?("default")
+        value["default"]
+      end
+
+    return nil if example.nil?
+
+    case example
+    when true
+      1
+    when false
+      0
+    else
+      example
+    end
+  end
+  private_class_method :find_example
 end
