@@ -59,10 +59,10 @@ module ChatWork
     def self.create(description: nil, icon_preset: nil, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, name:,
                     link: nil, link_code: nil, link_need_acceptance: nil)
       params = {
-        description:       description,
-        icon_preset:       icon_preset,
-        members_admin_ids: Array(members_admin_ids).join(","),
-        name:              name,
+        description:          description,
+        icon_preset:          icon_preset,
+        members_admin_ids:    Array(members_admin_ids).join(","),
+        name:                 name,
         link:                 boolean_to_integer(link),
         link_need_acceptance: boolean_to_integer(link_need_acceptance),
         link_code:            link_code,

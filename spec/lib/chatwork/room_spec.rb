@@ -26,9 +26,9 @@ describe ChatWork::Room do
       )
     end
 
-    let(:description) { "group chat description" }
-    let(:icon_preset) { "meeting" }
-    let(:name)        { "Website renewal project" }
+    let(:description)          { "group chat description" }
+    let(:icon_preset)          { "meeting" }
+    let(:name)                 { "Website renewal project" }
     let(:link)                 { false }
     let(:link_need_acceptance) { true }
     let(:link_code)            { nil }
