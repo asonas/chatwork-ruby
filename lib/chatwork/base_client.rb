@@ -3,6 +3,8 @@ require "faraday_middleware"
 
 module ChatWork
   class BaseClient
+    include Converter
+
     # @param api_base [String]
     # @param api_version [String]
     # @param header [Hash<String,String>]
@@ -32,9 +34,9 @@ module ChatWork
     end
 
     Faraday::Connection::METHODS.each do |method|
-      define_method(method) do |url, *args, &block|
+      define_method(method) do |url, args = {}, &block|
         begin
-          response = @conn.__send__(method, @api_version + url, *args)
+          response = @conn.__send__(method, @api_version + url, hash_compact(args))
         rescue Faraday::Error::ClientError => e
           raise ChatWork::APIConnectionError.faraday_error(e)
         end

@@ -9,7 +9,7 @@ module ChatWork
   autoload :ChatWorkError,      "chatwork/chatwork_error"
   autoload :Client,             "chatwork/client"
   autoload :Contacts,           "chatwork/contacts"
-  autoload :EntityMethods,      "chatwork/entity_methods"
+  autoload :Converter,          "chatwork/converter"
   autoload :File,               "chatwork/file"
   autoload :IncomingRequest,    "chatwork/incoming_request"
   autoload :InvitationLink,     "chatwork/invitation_link"
