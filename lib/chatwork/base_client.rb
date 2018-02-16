@@ -10,7 +10,7 @@ module ChatWork
 
       default_header.merge!(header)
 
-      @conn = Faraday.new("#{api_base}#{api_version}", headers: default_header) do |builder|
+      @conn = Faraday.new(api_base, headers: default_header) do |builder|
         builder.request :url_encoded
         builder.response :mashify
         builder.response :json
