@@ -1,7 +1,5 @@
 module ChatWork
   module Contacts
-    extend EntityMethods
-
     # Get the list of your contacts
     #
     # @see http://developer.chatwork.com/ja/endpoint_contacts.html#GET-contacts
@@ -27,7 +25,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(&block)
-      _get("/contacts", &block)
+      ChatWork.client.get_contacts(&block)
     end
   end
 end

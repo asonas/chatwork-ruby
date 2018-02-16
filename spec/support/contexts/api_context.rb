@@ -1,5 +1,6 @@
 RSpec.shared_context :api_context, type: :api do
   let(:api_key) { "api_key" }
+  let(:client)  { ChatWork::Client.new(api_key: api_key) }
 
   let(:response_headers) do
     {

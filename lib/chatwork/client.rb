@@ -1,5 +1,9 @@
 module ChatWork
   class Client < BaseClient
+    require "chatwork/client/contacts_methods"
+
+    include ContactsMethods
+
     # @param api_key      [String]
     # @param access_token [String]
     # @param api_base     [String] default is {ChatWork.api_base}
