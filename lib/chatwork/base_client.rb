@@ -3,7 +3,10 @@ require "faraday_middleware"
 
 module ChatWork
   class BaseClient
-    def initialize(api_base, api_version, header)
+    # @param api_base [String]
+    # @param api_version [String]
+    # @param header [Hash<String,String>]
+    def initialize(api_base:, api_version: "", header:)
       default_header = {
         "User-Agent" => "ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}",
       }

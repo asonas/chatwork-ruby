@@ -39,11 +39,11 @@ module ChatWork
     attr_reader :api_version
 
     def client
-      @client ||= Client.new(api_key, access_token, api_base, api_version)
+      @client ||= Client.new(api_key: api_key, access_token: access_token)
     end
 
     def oauth_client
-      @oauth_client ||= OAuthClient.new(client_id, client_secret, oauth_api_base)
+      @oauth_client ||= OAuthClient.new(client_id: client_id, client_secret: client_secret)
     end
 
     def api_base=(new_value)
