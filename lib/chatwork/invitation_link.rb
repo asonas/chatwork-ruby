@@ -1,7 +1,5 @@
 module ChatWork
   module InvitationLink
-    extend EntityMethods
-
     # Get invitation link
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-link
@@ -23,7 +21,7 @@ module ChatWork
     #     "description": "Link description text"
     #   }
     def self.get(room_id:, &block)
-      _get("/rooms/#{room_id}/link", &block)
+      ChatWork.client.get_invitation_link(room_id: room_id, &block)
     end
 
     # Create invitation link
@@ -50,12 +48,7 @@ module ChatWork
     #     "description": "This is a public room for topic A."
     #   }
     def self.create(room_id:, code: nil, description: nil, need_acceptance: nil, &block)
-      params = {
-        code:            code,
-        description:     description,
-        need_acceptance: boolean_to_integer(need_acceptance),
-      }
-      _post("/rooms/#{room_id}/link", params, &block)
+      ChatWork.client.create_invitation_link(room_id: room_id, code: code, description: description, need_acceptance: need_acceptance, &block)
     end
 
     # Update invitation link
@@ -82,12 +75,7 @@ module ChatWork
     #     "description": "Public room for everybody"
     #   }
     def self.update(room_id:, code: nil, description: nil, need_acceptance: nil, &block)
-      params = {
-        code:            code,
-        description:     description,
-        need_acceptance: boolean_to_integer(need_acceptance),
-      }
-      _put("/rooms/#{room_id}/link", params, &block)
+      ChatWork.client.update_invitation_link(room_id: room_id, code: code, description: description, need_acceptance: need_acceptance, &block)
     end
 
     # Delete invitation link
@@ -108,7 +96,7 @@ module ChatWork
     #     "public": false
     #   }
     def self.destroy(room_id:, &block)
-      _delete("/rooms/#{room_id}/link", &block)
+      ChatWork.client.destroy_invitation_link(room_id: room_id, &block)
     end
   end
 end
