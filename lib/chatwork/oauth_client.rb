@@ -2,6 +2,10 @@ require "base64"
 
 module ChatWork
   class OAuthClient < BaseClient
+    require "chatwork/oauth_client/token_methods"
+
+    include TokenMethods
+
     # @param client_id     [String]
     # @param client_secret [String]
     # @param api_base      [String] default is {ChatWork.oauth_api_base}

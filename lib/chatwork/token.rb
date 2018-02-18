@@ -15,13 +15,7 @@ module ChatWork
     #     "scope" => "users.all:read rooms.all:read_write contacts.all:read_write",
     #   }
     def self.refresh_access_token(refresh_token, scope = [])
-      params = {
-        grant_type:    "refresh_token",
-        refresh_token: refresh_token,
-      }
-      params[:scope] = scope.join(" ") unless scope.empty?
-
-      ChatWork.oauth_client.post("/token", params)
+      ChatWork.oauth_client.refresh_access_token(refresh_token, scope)
     end
   end
 end

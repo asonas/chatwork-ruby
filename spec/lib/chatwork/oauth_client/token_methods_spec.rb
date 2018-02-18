@@ -1,11 +1,8 @@
-describe ChatWork::Token do
-  describe ".refresh_access_token" do
-    subject { ChatWork::Token.refresh_access_token(refresh_token, scope) }
+describe ChatWork::OAuthClient::TokenMethods do
+  let(:oauth_client) { ChatWork::OAuthClient.new(client_id: client_id, client_secret: client_secret) }
 
-    before do
-      allow(ChatWork).to receive(:client_id)     { client_id }
-      allow(ChatWork).to receive(:client_secret) { client_secret }
-    end
+  describe ".refresh_access_token" do
+    subject { oauth_client.refresh_access_token(refresh_token, scope) }
 
     let(:client_id)     { "client_id" }
     let(:client_secret) { "client_secret" }
