@@ -6,6 +6,7 @@ module ChatWork
     require "chatwork/client/invitation_link_methods"
     require "chatwork/client/me_methods"
     require "chatwork/client/member_methods"
+    require "chatwork/client/message_methods"
 
     include ContactsMethods
     include FileMethods
@@ -13,6 +14,7 @@ module ChatWork
     include InvitationLinkMethods
     include MeMethods
     include MemberMethods
+    include MessageMethods
 
     # @param api_key      [String]
     # @param access_token [String]

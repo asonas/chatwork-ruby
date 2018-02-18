@@ -1,7 +1,5 @@
 module ChatWork
   module Message
-    extend EntityMethods
-
     # Get all messages associated with the specified chat (returns up to 100 entries).
     #
     # If the parameter is not set, it returns the next 100 entries from previous call.
@@ -33,7 +31,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, force: nil, &block)
-      _get("/rooms/#{room_id}/messages", force: boolean_to_integer(force), &block)
+      ChatWork.client.get_messages(room_id: room_id, force: force, &block)
     end
 
     # Add new message to the chat
@@ -55,7 +53,7 @@ module ChatWork
     #     "message_id": "1234"
     #   }
     def self.create(room_id:, body:, &block)
-      _post("/rooms/#{room_id}/messages", body: body, &block)
+      ChatWork.client.create_message(room_id: room_id, body: body, &block)
     end
 
     # Mark messages as read
@@ -78,7 +76,7 @@ module ChatWork
     #     "mention_num": 0
     #   }
     def self.read(room_id:, message_id: nil, &block)
-      _put("/rooms/#{room_id}/messages/read", message_id: message_id, &block)
+      ChatWork.client.read_message(room_id: room_id, message_id: message_id, &block)
     end
 
     # Mark messages as unread
@@ -101,7 +99,7 @@ module ChatWork
     #     "mention_num": 0
     #   }
     def self.unread(room_id:, message_id:, &block)
-      _put("/rooms/#{room_id}/messages/unread", message_id: message_id, &block)
+      ChatWork.client.unread_message(room_id: room_id, message_id: message_id, &block)
     end
 
     # Get information about the specified message
@@ -131,7 +129,7 @@ module ChatWork
     #     "update_time": 0
     #   }
     def self.find(room_id:, message_id:, &block)
-      _get("/rooms/#{room_id}/messages/#{message_id}", &block)
+      ChatWork.client.find_message(room_id: room_id, message_id: message_id, &block)
     end
 
     # Update the specified message
@@ -154,7 +152,7 @@ module ChatWork
     #     "message_id": "1234"
     #   }
     def self.update(room_id:, message_id:, body:, &block)
-      _put("/rooms/#{room_id}/messages/#{message_id}", body: body, &block)
+      ChatWork.client.update_message(room_id: room_id, message_id: message_id, body: body, &block)
     end
 
     # Destroy the specified message
@@ -176,7 +174,7 @@ module ChatWork
     #     "message_id": "1234"
     #   }
     def self.destroy(room_id:, message_id:, &block)
-      _delete("/rooms/#{room_id}/messages/#{message_id}", &block)
+      ChatWork.client.destroy_message(room_id: room_id, message_id: message_id, &block)
     end
   end
 end
