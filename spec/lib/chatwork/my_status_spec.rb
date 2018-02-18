@@ -1,7 +1,7 @@
 describe ChatWork::MyStatus do
   describe ".get", type: :api do
     subject do
-      ChatWork::MyStatus.get
+      ChatWork::MyStatus.get(&block)
     end
 
     before do

@@ -9,6 +9,10 @@ module ChatWork
     #
     # @param room_id [Integer]
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -18,8 +22,8 @@ module ChatWork
     #     "need_acceptance": true,
     #     "description": "Link description text"
     #   }
-    def self.get(room_id:)
-      _get("/rooms/#{room_id}/link")
+    def self.get(room_id:, &block)
+      _get("/rooms/#{room_id}/link", &block)
     end
 
     # Create invitation link
@@ -32,6 +36,10 @@ module ChatWork
     # @param description [String] description of link page
     # @param need_acceptance [Boolean] Approval necessity. Whether participation requires administrator approval.
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -41,13 +49,13 @@ module ChatWork
     #     "need_acceptance": true,
     #     "description": "This is a public room for topic A."
     #   }
-    def self.create(room_id:, code: nil, description: nil, need_acceptance: nil)
+    def self.create(room_id:, code: nil, description: nil, need_acceptance: nil, &block)
       params = {
         code:            code,
         description:     description,
         need_acceptance: boolean_to_integer(need_acceptance),
       }
-      _post("/rooms/#{room_id}/link", params)
+      _post("/rooms/#{room_id}/link", params, &block)
     end
 
     # Update invitation link
@@ -60,6 +68,10 @@ module ChatWork
     # @param description [String] description of link page
     # @param need_acceptance [Boolean] Approval necessity. Whether participation requires administrator approval.
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -69,13 +81,13 @@ module ChatWork
     #     "need_acceptance": false,
     #     "description": "Public room for everybody"
     #   }
-    def self.update(room_id:, code: nil, description: nil, need_acceptance: nil)
+    def self.update(room_id:, code: nil, description: nil, need_acceptance: nil, &block)
       params = {
         code:            code,
         description:     description,
         need_acceptance: boolean_to_integer(need_acceptance),
       }
-      _put("/rooms/#{room_id}/link", params)
+      _put("/rooms/#{room_id}/link", params, &block)
     end
 
     # Delete invitation link
@@ -85,14 +97,18 @@ module ChatWork
     #
     # @param room_id [Integer]
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
     #   {
     #     "public": false
     #   }
-    def self.destroy(room_id:)
-      _delete("/rooms/#{room_id}/link")
+    def self.destroy(room_id:, &block)
+      _delete("/rooms/#{room_id}/link", &block)
     end
   end
 end

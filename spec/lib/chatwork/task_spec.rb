@@ -6,6 +6,7 @@ describe ChatWork::Task do
         account_id:             account_id,
         assigned_by_account_id: assigned_by_account_id,
         status:                 status,
+        &block
       )
     end
 
@@ -28,6 +29,7 @@ describe ChatWork::Task do
         body:    body,
         to_ids:  to_ids,
         limit:   limit,
+        &block
       )
     end
 
@@ -62,6 +64,7 @@ describe ChatWork::Task do
       ChatWork::Task.find(
         room_id: room_id,
         task_id: task_id,
+        &block
       )
     end
 

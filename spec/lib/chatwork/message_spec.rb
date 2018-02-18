@@ -1,6 +1,6 @@
 describe ChatWork::Message do
   describe ".get", type: :api do
-    subject { ChatWork::Message.get(room_id: room_id, force: force) }
+    subject { ChatWork::Message.get(room_id: room_id, force: force, &block) }
 
     let(:room_id) { 123 }
 
@@ -22,7 +22,7 @@ describe ChatWork::Message do
   end
 
   describe ".create", type: :api do
-    subject { ChatWork::Message.create(room_id: room_id, body: body) }
+    subject { ChatWork::Message.create(room_id: room_id, body: body, &block) }
 
     let(:room_id) { 123 }
     let(:body)    { "Hello ChatWork!" }
@@ -35,7 +35,7 @@ describe ChatWork::Message do
   end
 
   describe ".read", type: :api do
-    subject { ChatWork::Message.read(room_id: room_id, message_id: message_id) }
+    subject { ChatWork::Message.read(room_id: room_id, message_id: message_id, &block) }
 
     let(:room_id)    { 123 }
     let(:message_id) { "101" }
@@ -48,7 +48,7 @@ describe ChatWork::Message do
   end
 
   describe ".unread", type: :api do
-    subject { ChatWork::Message.unread(room_id: room_id, message_id: message_id) }
+    subject { ChatWork::Message.unread(room_id: room_id, message_id: message_id, &block) }
 
     let(:room_id)    { 123 }
     let(:message_id) { "101" }
@@ -61,7 +61,7 @@ describe ChatWork::Message do
   end
 
   describe ".find", type: :api do
-    subject { ChatWork::Message.find(room_id: room_id, message_id: message_id) }
+    subject { ChatWork::Message.find(room_id: room_id, message_id: message_id, &block) }
 
     let(:room_id)    { 123 }
     let(:message_id) { "101" }
@@ -74,7 +74,7 @@ describe ChatWork::Message do
   end
 
   describe ".update", type: :api do
-    subject { ChatWork::Message.update(room_id: room_id, message_id: message_id, body: body) }
+    subject { ChatWork::Message.update(room_id: room_id, message_id: message_id, body: body, &block) }
 
     let(:room_id)    { 123 }
     let(:message_id) { "101" }
@@ -88,7 +88,7 @@ describe ChatWork::Message do
   end
 
   describe ".destroy", type: :api do
-    subject { ChatWork::Message.destroy(room_id: room_id, message_id: message_id) }
+    subject { ChatWork::Message.destroy(room_id: room_id, message_id: message_id, &block) }
 
     let(:room_id)    { 123 }
     let(:message_id) { "101" }

@@ -12,6 +12,10 @@ module ChatWork
     # @param room_id [Integer]
     # @param force   [Boolean, Integer] Flag which forces to get 100 newest entries regardless of previous calls.
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -28,8 +32,8 @@ module ChatWork
     #       "update_time": 0
     #     }
     #   ]
-    def self.get(room_id:, force: nil)
-      _get("/rooms/#{room_id}/messages", force: boolean_to_integer(force))
+    def self.get(room_id:, force: nil, &block)
+      _get("/rooms/#{room_id}/messages", force: boolean_to_integer(force), &block)
     end
 
     # Add new message to the chat
@@ -40,14 +44,18 @@ module ChatWork
     # @param room_id [Integer]
     # @param body    [String] message body
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
     #   {
     #     "message_id": "1234"
     #   }
-    def self.create(room_id:, body:)
-      _post("/rooms/#{room_id}/messages", body: body)
+    def self.create(room_id:, body:, &block)
+      _post("/rooms/#{room_id}/messages", body: body, &block)
     end
 
     # Mark messages as read
@@ -58,6 +66,10 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -65,8 +77,8 @@ module ChatWork
     #     "unread_num": 461,
     #     "mention_num": 0
     #   }
-    def self.read(room_id:, message_id: nil)
-      _put("/rooms/#{room_id}/messages/read", message_id: message_id)
+    def self.read(room_id:, message_id: nil, &block)
+      _put("/rooms/#{room_id}/messages/read", message_id: message_id, &block)
     end
 
     # Mark messages as unread
@@ -77,6 +89,10 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -84,8 +100,8 @@ module ChatWork
     #     "unread_num": 3,
     #     "mention_num": 0
     #   }
-    def self.unread(room_id:, message_id:)
-      _put("/rooms/#{room_id}/messages/unread", message_id: message_id)
+    def self.unread(room_id:, message_id:, &block)
+      _put("/rooms/#{room_id}/messages/unread", message_id: message_id, &block)
     end
 
     # Get information about the specified message
@@ -95,6 +111,10 @@ module ChatWork
     #
     # @param room_id [Integer]
     # @param message_id [String]
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     #
     # @return [Hashie::Mash]
     #
@@ -110,8 +130,8 @@ module ChatWork
     #     "send_time": 1384242850,
     #     "update_time": 0
     #   }
-    def self.find(room_id:, message_id:)
-      _get("/rooms/#{room_id}/messages/#{message_id}")
+    def self.find(room_id:, message_id:, &block)
+      _get("/rooms/#{room_id}/messages/#{message_id}", &block)
     end
 
     # Update the specified message
@@ -123,14 +143,18 @@ module ChatWork
     # @param message_id [String]
     # @param body [String] message body
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
     #   {
     #     "message_id": "1234"
     #   }
-    def self.update(room_id:, message_id:, body:)
-      _put("/rooms/#{room_id}/messages/#{message_id}", body: body)
+    def self.update(room_id:, message_id:, body:, &block)
+      _put("/rooms/#{room_id}/messages/#{message_id}", body: body, &block)
     end
 
     # Destroy the specified message
@@ -141,14 +165,18 @@ module ChatWork
     # @param room_id [Integer]
     # @param message_id [String]
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
     #   {
     #     "message_id": "1234"
     #   }
-    def self.destroy(room_id:, message_id:)
-      _delete("/rooms/#{room_id}/messages/#{message_id}")
+    def self.destroy(room_id:, message_id:, &block)
+      _delete("/rooms/#{room_id}/messages/#{message_id}", &block)
     end
   end
 end

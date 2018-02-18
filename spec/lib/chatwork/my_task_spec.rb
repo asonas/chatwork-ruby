@@ -4,6 +4,7 @@ describe ChatWork::MyTask do
       ChatWork::MyTask.get(
         assigned_by_account_id: assigned_by_account_id,
         status:                 status,
+        &block
       )
     end
 

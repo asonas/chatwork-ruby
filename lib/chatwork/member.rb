@@ -9,6 +9,10 @@ module ChatWork
     #
     # @param room_id [Integer]
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -24,8 +28,8 @@ module ChatWork
     #       "avatar_image_url": "https://example.com/abc.png"
     #     }
     #   ]
-    def self.get(room_id:)
-      _get("/rooms/#{room_id}/members")
+    def self.get(room_id:, &block)
+      _get("/rooms/#{room_id}/members", &block)
     end
 
     # Change associated members of group chat at once
@@ -39,6 +43,10 @@ module ChatWork
     # @param members_member_ids [Array<Integer>, String] List of user IDs who will be given member permission for the group chat.
     # @param members_readonly_ids [Array<Integer>, String] List of user IDs who will be given read-only permission for the group chat.
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -47,14 +55,14 @@ module ChatWork
     #     "member": [10, 103],
     #     "readonly": [6, 11]
     #   }
-    def self.update_all(room_id:, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil)
+    def self.update_all(room_id:, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, &block)
       params = {
         members_admin_ids: Array(members_admin_ids).join(","),
       }
       params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
       params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
 
-      _put("/rooms/#{room_id}/members", params)
+      _put("/rooms/#{room_id}/members", params, &block)
     end
   end
 end

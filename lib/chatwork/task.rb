@@ -14,6 +14,10 @@ module ChatWork
     # @param assigned_by_account_id [Integer] Account ID of the person who assigned task
     # @param status [String] Task status (open, done)
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -36,8 +40,8 @@ module ChatWork
     #       "status": "open"
     #     }
     #   ]
-    def self.get(room_id:, account_id:, assigned_by_account_id: nil, status: nil)
-      _get("/rooms/#{room_id}/tasks", account_id: account_id, assigned_by_account_id: assigned_by_account_id, status: status)
+    def self.get(room_id:, account_id:, assigned_by_account_id: nil, status: nil, &block)
+      _get("/rooms/#{room_id}/tasks", account_id: account_id, assigned_by_account_id: assigned_by_account_id, status: status, &block)
     end
 
     # Add a new task to the chat
@@ -50,20 +54,24 @@ module ChatWork
     # @param to_ids [Array<Integer>, String] Account ID of the person/people responsible to complete the task
     # @param limit  [Time, Integer] When the task is due
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
     #   {
     #     "task_ids": [123,124]
     #   }
-    def self.create(room_id:, body:, to_ids:, limit: nil)
+    def self.create(room_id:, body:, to_ids:, limit: nil, &block)
       params = {
         body:   body,
         to_ids: Array(to_ids).join(","),
       }
       params[:limit] = limit.to_i if limit
 
-      _post("/rooms/#{room_id}/tasks", params)
+      _post("/rooms/#{room_id}/tasks", params, &block)
     end
 
     # Get information about the specified task
@@ -73,6 +81,10 @@ module ChatWork
     #
     # @param room_id [Integer]
     # @param task_id [Integer]
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     #
     # @return [Hashie::Mash]
     #
@@ -94,8 +106,8 @@ module ChatWork
     #     "limit_time": 1384354799,
     #     "status": "open"
     #   }
-    def self.find(room_id:, task_id:)
-      _get("/rooms/#{room_id}/tasks/#{task_id}")
+    def self.find(room_id:, task_id:, &block)
+      _get("/rooms/#{room_id}/tasks/#{task_id}", &block)
     end
   end
 end

@@ -1,6 +1,6 @@
 describe ChatWork::Contacts do
   describe ".get", type: :api do
-    subject { ChatWork::Contacts.get }
+    subject { ChatWork::Contacts.get(&block) }
 
     before do
       stub_chatwork_request(:get, "/contacts")

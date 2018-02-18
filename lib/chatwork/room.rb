@@ -7,6 +7,10 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -27,8 +31,8 @@ module ChatWork
     #       "last_update_time": 1298905200
     #     }
     #   ]
-    def self.get
-      _get("/rooms")
+    def self.get(&block)
+      _get("/rooms", &block)
     end
 
     # rubocop:disable Metrics/ParameterLists
@@ -50,6 +54,10 @@ module ChatWork
     # @param link_code [String] link path (default. random string)
     # @param link_need_acceptance [Boolean] Approval necessity. Whether participation requires administrator approval.
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -57,7 +65,7 @@ module ChatWork
     #     "room_id": 1234
     #   }
     def self.create(description: nil, icon_preset: nil, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, name:,
-                    link: nil, link_code: nil, link_need_acceptance: nil)
+                    link: nil, link_code: nil, link_need_acceptance: nil, &block)
       params = {
         description:          description,
         icon_preset:          icon_preset,
@@ -70,7 +78,7 @@ module ChatWork
       params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
       params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
 
-      _post("/rooms", params)
+      _post("/rooms", params, &block)
     end
 
     # rubocop:enable Metrics/ParameterLists
@@ -81,6 +89,10 @@ module ChatWork
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param room_id [Integer]
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     #
     # @return [Hashie::Mash]
     #
@@ -101,8 +113,8 @@ module ChatWork
     #     "last_update_time": 1298905200,
     #     "description": "room description text"
     #   }
-    def self.find(room_id:)
-      _get("/rooms/#{room_id}")
+    def self.find(room_id:, &block)
+      _get("/rooms/#{room_id}", &block)
     end
 
     # Change the title and icon type of the specified chat
@@ -116,14 +128,18 @@ module ChatWork
     #                             study, security, star, idea, heart, magcup, beer, music, sports, travel)
     # @param name [String] Title of the group chat.
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
     #   {
     #     "room_id": 1234
     #   }
-    def self.update(room_id:, description: nil, icon_preset: nil, name: nil)
-      _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name)
+    def self.update(room_id:, description: nil, icon_preset: nil, name: nil, &block)
+      _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name, &block)
     end
 
     # Leave/Delete a group chat
@@ -133,8 +149,12 @@ module ChatWork
     #
     # @param room_id [Integer]
     # @param action_type [String] leave from a room or delete a room (leave, delete)
-    def self.destroy(room_id:, action_type:)
-      _delete("/rooms/#{room_id}", action_type: action_type)
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    def self.destroy(room_id:, action_type:, &block)
+      _delete("/rooms/#{room_id}", action_type: action_type, &block)
     end
   end
 end

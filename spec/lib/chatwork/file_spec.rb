@@ -1,6 +1,6 @@
 describe ChatWork::File do
   describe ".get", type: :api do
-    subject { ChatWork::File.get(room_id: room_id, account_id: account_id) }
+    subject { ChatWork::File.get(room_id: room_id, account_id: account_id, &block) }
 
     before do
       stub_chatwork_request(:get, "/rooms/#{room_id}/files", "/rooms/{room_id}/files")
@@ -13,7 +13,7 @@ describe ChatWork::File do
   end
 
   describe ".find", type: :api do
-    subject { ChatWork::File.find(room_id: room_id, file_id: file_id, create_download_url: create_download_url) }
+    subject { ChatWork::File.find(room_id: room_id, file_id: file_id, create_download_url: create_download_url, &block) }
 
     before do
       stub_chatwork_request(:get, "/rooms/#{room_id}/files/#{file_id}", "/rooms/{room_id}/files/{file_id}")

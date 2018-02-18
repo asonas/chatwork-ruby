@@ -1,6 +1,6 @@
 describe ChatWork::Member do
   describe ".get", type: :api do
-    subject { ChatWork::Member.get(room_id: room_id) }
+    subject { ChatWork::Member.get(room_id: room_id, &block) }
 
     let(:room_id) { 123 }
 
@@ -18,6 +18,7 @@ describe ChatWork::Member do
         members_admin_ids:    members_admin_ids,
         members_member_ids:   members_member_ids,
         members_readonly_ids: members_readonly_ids,
+        &block
       )
     end
 

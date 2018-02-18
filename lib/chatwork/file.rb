@@ -10,6 +10,10 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-files
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -27,8 +31,8 @@ module ChatWork
     #       "upload_time": 1384414750
     #     }
     #   ]
-    def self.get(room_id:, account_id:)
-      _get("/rooms/#{room_id}/files", account_id: account_id)
+    def self.get(room_id:, account_id:, &block)
+      _get("/rooms/#{room_id}/files", account_id: account_id, &block)
     end
 
     # Get information about the specified file
@@ -40,6 +44,10 @@ module ChatWork
     # @param file_id [Integer]
     # @param create_download_url [Boolean] whether or not to create a download link.
     #                                      If set to true, download like will be created for 30 seconds
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     #
     # @return [Hashie::Mash]
     #
@@ -56,8 +64,8 @@ module ChatWork
     #     "filesize": 2232,
     #     "upload_time": 1384414750
     #   }
-    def self.find(room_id:, file_id:, create_download_url: nil)
-      _get("/rooms/#{room_id}/files/#{file_id}", create_download_url: boolean_to_integer(create_download_url))
+    def self.find(room_id:, file_id:, create_download_url: nil, &block)
+      _get("/rooms/#{room_id}/files/#{file_id}", create_download_url: boolean_to_integer(create_download_url), &block)
     end
   end
 end
