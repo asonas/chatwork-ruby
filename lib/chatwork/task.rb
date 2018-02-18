@@ -1,7 +1,5 @@
 module ChatWork
   module Task
-    extend EntityMethods
-
     # Get the list of tasks associated with the specified chat
     #
     # (*This method returns up to 100 entries. We are planning to implement pagination to support larger number of data retrieval)
@@ -41,7 +39,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, account_id:, assigned_by_account_id: nil, status: nil, &block)
-      _get("/rooms/#{room_id}/tasks", account_id: account_id, assigned_by_account_id: assigned_by_account_id, status: status, &block)
+      ChatWork.client.get_tasks(room_id: room_id, account_id: account_id, assigned_by_account_id: assigned_by_account_id, status: status, &block)
     end
 
     # Add a new task to the chat
@@ -65,13 +63,7 @@ module ChatWork
     #     "task_ids": [123,124]
     #   }
     def self.create(room_id:, body:, to_ids:, limit: nil, &block)
-      params = {
-        body:   body,
-        to_ids: Array(to_ids).join(","),
-      }
-      params[:limit] = limit.to_i if limit
-
-      _post("/rooms/#{room_id}/tasks", params, &block)
+      ChatWork.client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit, &block)
     end
 
     # Get information about the specified task
@@ -107,7 +99,7 @@ module ChatWork
     #     "status": "open"
     #   }
     def self.find(room_id:, task_id:, &block)
-      _get("/rooms/#{room_id}/tasks/#{task_id}", &block)
+      ChatWork.client.find_task(room_id: room_id, task_id: task_id, &block)
     end
   end
 end
