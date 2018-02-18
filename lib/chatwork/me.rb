@@ -1,7 +1,5 @@
 module ChatWork
   module Me
-    extend EntityMethods
-
     # Get your account information
     #
     # @see http://developer.chatwork.com/ja/endpoint_me.html#GET-me
@@ -36,7 +34,7 @@ module ChatWork
     #     "login_mail": "account@example.com"
     #   }
     def self.get(&block)
-      _get("/me", &block)
+      ChatWork.client.get_me(&block)
     end
   end
 end

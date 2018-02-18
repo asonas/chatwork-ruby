@@ -4,11 +4,13 @@ module ChatWork
     require "chatwork/client/file_methods"
     require "chatwork/client/incoming_request_methods"
     require "chatwork/client/invitation_link_methods"
+    require "chatwork/client/me_methods"
 
     include ContactsMethods
     include FileMethods
     include IncomingRequestMethods
     include InvitationLinkMethods
+    include MeMethods
 
     # @param api_key      [String]
     # @param access_token [String]
