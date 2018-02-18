@@ -1,6 +1,6 @@
 describe ChatWork::InvitationLink do
   describe ".get", type: :api do
-    subject { ChatWork::InvitationLink.get(room_id: room_id) }
+    subject { ChatWork::InvitationLink.get(room_id: room_id, &block) }
 
     let(:room_id) { 123 }
 
@@ -18,6 +18,7 @@ describe ChatWork::InvitationLink do
         code:            code,
         description:     description,
         need_acceptance: need_acceptance,
+        &block
       )
     end
 
@@ -40,6 +41,7 @@ describe ChatWork::InvitationLink do
         code:            code,
         description:     description,
         need_acceptance: need_acceptance,
+        &block
       )
     end
 
@@ -56,7 +58,7 @@ describe ChatWork::InvitationLink do
   end
 
   describe ".destroy", type: :api do
-    subject { ChatWork::InvitationLink.destroy(room_id: room_id) }
+    subject { ChatWork::InvitationLink.destroy(room_id: room_id, &block) }
 
     let(:room_id) { 123 }
 

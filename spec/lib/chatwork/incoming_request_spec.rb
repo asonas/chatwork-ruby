@@ -1,6 +1,6 @@
 describe ChatWork::IncomingRequest do
   describe ".get", type: :api do
-    subject { ChatWork::IncomingRequest.get }
+    subject { ChatWork::IncomingRequest.get(&block) }
 
     before do
       stub_chatwork_request(:get, "/incoming_requests")
@@ -10,7 +10,7 @@ describe ChatWork::IncomingRequest do
   end
 
   describe ".update", type: :api do
-    subject { ChatWork::IncomingRequest.update(request_id: request_id) }
+    subject { ChatWork::IncomingRequest.update(request_id: request_id, &block) }
 
     let(:request_id) { 123 }
 
@@ -22,7 +22,7 @@ describe ChatWork::IncomingRequest do
   end
 
   describe ".destroy", type: :api do
-    subject { ChatWork::IncomingRequest.destroy(request_id: request_id) }
+    subject { ChatWork::IncomingRequest.destroy(request_id: request_id, &block) }
 
     let(:request_id) { 123 }
 

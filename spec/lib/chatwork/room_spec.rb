@@ -1,6 +1,6 @@
 describe ChatWork::Room do
   describe ".get", type: :api do
-    subject { ChatWork::Room.get }
+    subject { ChatWork::Room.get(&block) }
 
     let(:room_id) { 123 }
 
@@ -23,6 +23,7 @@ describe ChatWork::Room do
         link:                 link,
         link_code:            link_code,
         link_need_acceptance: link_need_acceptance,
+        &block
       )
     end
 
@@ -55,7 +56,7 @@ describe ChatWork::Room do
   end
 
   describe ".find", type: :api do
-    subject { ChatWork::Room.find(room_id: room_id) }
+    subject { ChatWork::Room.find(room_id: room_id, &block) }
 
     let(:room_id) { 123 }
 
@@ -73,6 +74,7 @@ describe ChatWork::Room do
         description: description,
         icon_preset: icon_preset,
         name:        name,
+        &block
       )
     end
 
@@ -93,6 +95,7 @@ describe ChatWork::Room do
       ChatWork::Room.destroy(
         room_id:     room_id,
         action_type: action_type,
+        &block
       )
     end
 

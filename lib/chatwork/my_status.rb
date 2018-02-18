@@ -7,6 +7,10 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_my.html#GET-my-status
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Hashie::Mash]
     #
     # @example response format
@@ -18,8 +22,8 @@ module ChatWork
     #     "mention_num": 1,
     #     "mytask_num": 8
     #   }
-    def self.get
-      _get("/my/status")
+    def self.get(&block)
+      _get("/my/status", &block)
     end
   end
 end

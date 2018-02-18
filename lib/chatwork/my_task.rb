@@ -12,6 +12,10 @@ module ChatWork
     # @param assigned_by_account_id [Integer] Account ID of the person who assigned task
     # @param status [String] Task status (open, done)
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -34,8 +38,8 @@ module ChatWork
     #       "status": "open"
     #     }
     #   ]
-    def self.get(assigned_by_account_id: nil, status: nil)
-      _get("/my/tasks", assigned_by_account_id: assigned_by_account_id, status: status)
+    def self.get(assigned_by_account_id: nil, status: nil, &block)
+      _get("/my/tasks", assigned_by_account_id: assigned_by_account_id, status: status, &block)
     end
   end
 end

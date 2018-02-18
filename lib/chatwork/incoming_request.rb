@@ -9,6 +9,10 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_incoming_requests.html#GET-incoming_requests
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Array<Hashie::Mash>] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
     # @return [Array<Hashie::Mash>]
     #
     # @example response format
@@ -25,8 +29,8 @@ module ChatWork
     #       "avatar_image_url": "https://example.com/abc.png"
     #     }
     #   ]
-    def self.get
-      _get("/incoming_requests")
+    def self.get(&block)
+      _get("/incoming_requests", &block)
     end
 
     # You can approve a contact approval request you received
@@ -35,6 +39,10 @@ module ChatWork
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param request_id [Integer]
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     #
     # @return [Hashie::Mash]
     #
@@ -49,8 +57,8 @@ module ChatWork
     #     "department": "Marketing",
     #     "avatar_image_url": "https://example.com/abc.png"
     #   }
-    def self.update(request_id:)
-      _put("/incoming_requests/#{request_id}")
+    def self.update(request_id:, &block)
+      _put("/incoming_requests/#{request_id}", &block)
     end
 
     # You can decline a contact approval request you received
@@ -59,8 +67,12 @@ module ChatWork
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
     # @param request_id [Integer]
-    def self.destroy(request_id:)
-      _delete("/incoming_requests/#{request_id}")
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    def self.destroy(request_id:, &block)
+      _delete("/incoming_requests/#{request_id}", &block)
     end
 
     class << self
