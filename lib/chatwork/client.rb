@@ -2,9 +2,11 @@ module ChatWork
   class Client < BaseClient
     require "chatwork/client/contacts_methods"
     require "chatwork/client/file_methods"
+    require "chatwork/client/incoming_request_methods"
 
     include ContactsMethods
     include FileMethods
+    include IncomingRequestMethods
 
     # @param api_key      [String]
     # @param access_token [String]
