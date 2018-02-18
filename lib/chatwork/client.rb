@@ -7,6 +7,7 @@ module ChatWork
     require "chatwork/client/me_methods"
     require "chatwork/client/member_methods"
     require "chatwork/client/message_methods"
+    require "chatwork/client/my_status_methods"
 
     include ContactsMethods
     include FileMethods
@@ -15,6 +16,7 @@ module ChatWork
     include MeMethods
     include MemberMethods
     include MessageMethods
+    include MyStatusMethods
 
     # @param api_key      [String]
     # @param access_token [String]
