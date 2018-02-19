@@ -32,64 +32,90 @@ module ChatWork
   @client_secret = nil
 
   class << self
+    # @!attribute [r] api_base
+    #  @return [String]
     attr_reader :api_base
 
+    # @!attribute [r] oauth_api_base
+    #  @return [String]
     attr_reader :oauth_api_base
 
+    # @!attribute [r] api_version
+    #  @return [String]
     attr_reader :api_version
 
+    # @return [ChatWork::Client]
     def client
       @client ||= Client.new(api_key: api_key, access_token: access_token)
     end
 
+    # @return [ChatWork::OAuthClient]
     def oauth_client
       @oauth_client ||= OAuthClient.new(client_id: client_id, client_secret: client_secret)
     end
 
+    # @param new_value [String]
     def api_base=(new_value)
       @api_base = new_value
       @client = nil
     end
 
+    # @param new_value [String]
     def oauth_api_base=(new_value)
       @oauth_api_base = new_value
       @oauth_client = nil
     end
 
+    # @param new_value [String]
     def api_key=(new_value)
       @api_key = new_value
       @access_token = nil
       @client = nil
     end
 
+    # @param new_value [String]
     def access_token=(new_value)
       @api_key = nil
       @access_token = new_value
       @client = nil
     end
 
+    # @param new_value [String]
     def client_id=(new_value)
       @client_id = new_value
       @oauth_client = nil
     end
 
+    # @param new_value [String]
     def client_secret=(new_value)
       @client_secret = new_value
       @oauth_client = nil
     end
 
+    # @return [String]
+    #
+    # @note if {ChatWork.api_key} is not defined, returns `ENV["CHATWORK_API_TOKEN"]`
     def api_key
       @api_key || ENV["CHATWORK_API_TOKEN"]
     end
 
+    # @return [String]
+    #
+    # @note if {ChatWork.access_token} is not defined, returns `ENV["CHATWORK_ACCESS_TOKEN"]`
     def access_token
       @access_token || ENV["CHATWORK_ACCESS_TOKEN"]
     end
 
+    # @return [String]
+    #
+    # @note if {ChatWork.client_id} is not defined, returns `ENV["CHATWORK_CLIENT_ID"]`
     def client_id
       @client_id || ENV["CHATWORK_CLIENT_ID"]
     end
 
+    # @return [String]
+    #
+    # @note if {ChatWork.client_secret} is not defined, returns `ENV["CHATWORK_CLIENT_SECRET"]`
     def client_secret
       @client_secret || ENV["CHATWORK_CLIENT_SECRET"]
     end
