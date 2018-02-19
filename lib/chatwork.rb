@@ -61,6 +61,12 @@ module ChatWork
     end
 
     # @param new_value [String]
+    def api_version=(new_value)
+      @api_version = new_value
+      @client = nil
+    end
+
+    # @param new_value [String]
     def oauth_api_base=(new_value)
       @oauth_api_base = new_value
       @oauth_client = nil
