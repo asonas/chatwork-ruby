@@ -1,6 +1,13 @@
 describe ChatWork::Client do
   describe "#initialize" do
-    subject { ChatWork::Client.new(api_key, access_token, api_base, api_version) }
+    subject do
+      ChatWork::Client.new(
+        api_key:      api_key,
+        access_token: access_token,
+        api_base:     api_base,
+        api_version:  api_version,
+      )
+    end
 
     let(:api_key)      { nil }
     let(:access_token) { nil }

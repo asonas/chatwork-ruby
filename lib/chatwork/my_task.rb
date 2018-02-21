@@ -1,7 +1,5 @@
 module ChatWork
   module MyTask
-    extend EntityMethods
-
     # Get the list of all unfinished tasks
     #
     # (*This method returns up to 100 entries. We are planning to implement pagination to support larger number of data retrieval)
@@ -39,7 +37,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(assigned_by_account_id: nil, status: nil, &block)
-      _get("/my/tasks", assigned_by_account_id: assigned_by_account_id, status: status, &block)
+      ChatWork.client.get_my_tasks(assigned_by_account_id: assigned_by_account_id, status: status, &block)
     end
   end
 end

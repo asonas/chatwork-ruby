@@ -1,7 +1,5 @@
 module ChatWork
   module IncomingRequest
-    extend EntityMethods
-
     # You can get the list of contact approval request you received
     #
     # (*This method returns up to 100 entries. We are planning to implement pagination to support larger number of data retrieval)
@@ -30,7 +28,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(&block)
-      _get("/incoming_requests", &block)
+      ChatWork.client.get_incoming_requests(&block)
     end
 
     # You can approve a contact approval request you received
@@ -58,7 +56,7 @@ module ChatWork
     #     "avatar_image_url": "https://example.com/abc.png"
     #   }
     def self.update(request_id:, &block)
-      _put("/incoming_requests/#{request_id}", &block)
+      ChatWork.client.update_incoming_request(request_id: request_id, &block)
     end
 
     # You can decline a contact approval request you received
@@ -72,7 +70,7 @@ module ChatWork
     # @yieldparam response_body [Hashie::Mash] response body
     # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     def self.destroy(request_id:, &block)
-      _delete("/incoming_requests/#{request_id}", &block)
+      ChatWork.client.destroy_incoming_request(request_id: request_id, &block)
     end
 
     class << self

@@ -1,7 +1,5 @@
 module ChatWork
   module Member
-    extend EntityMethods
-
     # Get the list of all chat members associated with the specified chat
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-members
@@ -29,7 +27,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, &block)
-      _get("/rooms/#{room_id}/members", &block)
+      ChatWork.client.get_members(room_id: room_id, &block)
     end
 
     # Change associated members of group chat at once
@@ -56,13 +54,13 @@ module ChatWork
     #     "readonly": [6, 11]
     #   }
     def self.update_all(room_id:, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, &block)
-      params = {
-        members_admin_ids: Array(members_admin_ids).join(","),
-      }
-      params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
-      params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
-
-      _put("/rooms/#{room_id}/members", params, &block)
+      ChatWork.client.update_all_members(
+        room_id:              room_id,
+        members_admin_ids:    members_admin_ids,
+        members_member_ids:   members_member_ids,
+        members_readonly_ids: members_readonly_ids,
+        &block
+      )
     end
   end
 end

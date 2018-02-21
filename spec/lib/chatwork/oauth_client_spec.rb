@@ -1,6 +1,12 @@
 describe ChatWork::OAuthClient do
   describe "#initialize" do
-    subject { ChatWork::OAuthClient.new(client_id, client_secret, api_base) }
+    subject do
+      ChatWork::OAuthClient.new(
+        client_id:     client_id,
+        client_secret: client_secret,
+        api_base:      api_base,
+      )
+    end
 
     let(:client_id)     { "client_id" }
     let(:client_secret) { "client_secret" }

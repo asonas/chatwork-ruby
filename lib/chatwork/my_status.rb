@@ -1,7 +1,5 @@
 module ChatWork
   module MyStatus
-    extend EntityMethods
-
     # Get the number of: unread messages, unread To messages, and unfinished tasks.
     #
     # @see http://developer.chatwork.com/ja/endpoint_my.html#GET-my-status
@@ -23,7 +21,7 @@ module ChatWork
     #     "mytask_num": 8
     #   }
     def self.get(&block)
-      _get("/my/status", &block)
+      ChatWork.client.get_my_status(&block)
     end
   end
 end

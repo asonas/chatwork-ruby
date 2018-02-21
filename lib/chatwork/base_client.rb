@@ -3,14 +3,19 @@ require "faraday_middleware"
 
 module ChatWork
   class BaseClient
-    def initialize(api_base, api_version, header)
+    include Converter
+
+    # @param api_base [String]
+    # @param api_version [String]
+    # @param header [Hash<String,String>]
+    def initialize(api_base:, api_version: "", header:)
       default_header = {
         "User-Agent" => "ChatWork#{api_version} RubyBinding/#{ChatWork::VERSION}",
       }
 
       default_header.merge!(header)
 
-      @conn = Faraday.new("#{api_base}#{api_version}", headers: default_header) do |builder|
+      @conn = Faraday.new(api_base, headers: default_header) do |builder|
         builder.request :url_encoded
         builder.response :mashify
         builder.response :json
@@ -29,9 +34,9 @@ module ChatWork
     end
 
     Faraday::Connection::METHODS.each do |method|
-      define_method(method) do |url, *args, &block|
+      define_method(method) do |url, args = {}, &block|
         begin
-          response = @conn.__send__(method, @api_version + url, *args)
+          response = @conn.__send__(method, @api_version + url, hash_compact(args))
         rescue Faraday::Error::ClientError => e
           raise ChatWork::APIConnectionError.faraday_error(e)
         end

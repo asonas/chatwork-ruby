@@ -1,7 +1,5 @@
 module ChatWork
   module Room
-    extend EntityMethods
-
     # Get the list of all chats on your account
     #
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms
@@ -32,7 +30,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(&block)
-      _get("/rooms", &block)
+      ChatWork.client.get_rooms(&block)
     end
 
     # rubocop:disable Metrics/ParameterLists
@@ -66,19 +64,18 @@ module ChatWork
     #   }
     def self.create(description: nil, icon_preset: nil, members_admin_ids:, members_member_ids: nil, members_readonly_ids: nil, name:,
                     link: nil, link_code: nil, link_need_acceptance: nil, &block)
-      params = {
+      ChatWork.client.create_room(
         description:          description,
         icon_preset:          icon_preset,
-        members_admin_ids:    Array(members_admin_ids).join(","),
+        members_admin_ids:    members_admin_ids,
+        members_member_ids:   members_member_ids,
+        members_readonly_ids: members_readonly_ids,
         name:                 name,
-        link:                 boolean_to_integer(link),
-        link_need_acceptance: boolean_to_integer(link_need_acceptance),
+        link:                 link,
         link_code:            link_code,
-      }
-      params[:members_member_ids] = Array(members_member_ids).join(",") if members_member_ids
-      params[:members_readonly_ids] = Array(members_readonly_ids).join(",") if members_readonly_ids
-
-      _post("/rooms", params, &block)
+        link_need_acceptance: link_need_acceptance,
+        &block
+      )
     end
 
     # rubocop:enable Metrics/ParameterLists
@@ -114,7 +111,7 @@ module ChatWork
     #     "description": "room description text"
     #   }
     def self.find(room_id:, &block)
-      _get("/rooms/#{room_id}", &block)
+      ChatWork.client.find_room(room_id: room_id, &block)
     end
 
     # Change the title and icon type of the specified chat
@@ -139,7 +136,7 @@ module ChatWork
     #     "room_id": 1234
     #   }
     def self.update(room_id:, description: nil, icon_preset: nil, name: nil, &block)
-      _put("/rooms/#{room_id}", description: description, icon_preset: icon_preset, name: name, &block)
+      ChatWork.client.update_room(room_id: room_id, description: description, icon_preset: icon_preset, name: name, &block)
     end
 
     # Leave/Delete a group chat
@@ -154,7 +151,7 @@ module ChatWork
     # @yieldparam response_body [Hashie::Mash] response body
     # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
     def self.destroy(room_id:, action_type:, &block)
-      _delete("/rooms/#{room_id}", action_type: action_type, &block)
+      ChatWork.client.destroy_room(room_id: room_id, action_type: action_type, &block)
     end
   end
 end

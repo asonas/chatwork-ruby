@@ -1,7 +1,5 @@
 module ChatWork
   module File
-    extend EntityMethods
-
     # Get the list of files associated with the specified chat
     #
     # @param room_id [Integer]
@@ -32,7 +30,7 @@ module ChatWork
     #     }
     #   ]
     def self.get(room_id:, account_id:, &block)
-      _get("/rooms/#{room_id}/files", account_id: account_id, &block)
+      ChatWork.client.get_files(room_id: room_id, account_id: account_id, &block)
     end
 
     # Get information about the specified file
@@ -65,7 +63,7 @@ module ChatWork
     #     "upload_time": 1384414750
     #   }
     def self.find(room_id:, file_id:, create_download_url: nil, &block)
-      _get("/rooms/#{room_id}/files/#{file_id}", create_download_url: boolean_to_integer(create_download_url), &block)
+      ChatWork.client.find_file(room_id: room_id, file_id: file_id, create_download_url: create_download_url, &block)
     end
   end
 end

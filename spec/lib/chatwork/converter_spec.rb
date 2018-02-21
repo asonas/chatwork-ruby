@@ -1,5 +1,5 @@
-describe ChatWork::EntityMethods do
-  include ChatWork::EntityMethods
+describe ChatWork::Converter do
+  include ChatWork::Converter
 
   describe "#boolean_to_integer" do
     subject { boolean_to_integer(value) }
