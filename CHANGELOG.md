@@ -1,6 +1,14 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.7.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.8.0...master)
+
+## v0.8.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.7.0...v0.8.0)
+
+* Add instance methods of `ChatWork::Client`
+  * https://github.com/asonas/chatwork-ruby/pull/49
+* Fixed. API method did not accept block
+  * https://github.com/asonas/chatwork-ruby/pull/50
 
 ## v0.7.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.6.2...v0.7.0)
