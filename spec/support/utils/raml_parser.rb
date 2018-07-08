@@ -1,6 +1,6 @@
 module RamlParser
   def self.find_resource(verb, path)
-    elements = path.split("/").reject(&:empty?).map { |str| "/#{str}" }
+    elements = path.split("/").reject(&:empty?).map {|str| "/#{str}" }
     elements << verb.to_s.upcase
     find_node(elements)
   end
