@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.8.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.9.0...master)
+
+## v0.9.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.8.0...v0.9.0)
+
+* Add `self_unread` option to `ChatWork::Client#create_message` and `ChatWork::Message.create`
+  * https://github.com/asonas/chatwork-ruby/pull/52
 
 ## v0.8.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.7.0...v0.8.0)
