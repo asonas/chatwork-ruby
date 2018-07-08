@@ -25,7 +25,7 @@ begin
 rescue LoadError # rubocop:disable Lint/HandleExceptions
 end
 
-Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
+Dir["#{__dir__}/support/**/*.rb"].each {|f| require f }
 
 def spec_dir
   Pathname(__dir__)

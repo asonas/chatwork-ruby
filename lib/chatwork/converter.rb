@@ -1,7 +1,7 @@
 module ChatWork
   module Converter
     def hash_compact(hash)
-      hash.reject { |_k, v| v.nil? }
+      hash.reject {|_k, v| v.nil? }
     end
 
     def boolean_to_integer(value)
