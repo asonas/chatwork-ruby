@@ -7,3 +7,11 @@ begin
 rescue
   warn("Install rspec")
 end
+
+desc "Update API schama"
+task :update_api_schema do
+  command = "git submodule foreach git pull origin master --ff"
+  sh command
+  sh "git add api"
+  sh "git commit -m '#{command}'"
+end
