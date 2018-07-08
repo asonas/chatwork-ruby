@@ -38,8 +38,8 @@ module ChatWork::Client::MessageMethods
   # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-messages
   # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
   #
-  # @param room_id [Integer]
-  # @param body    [String] message body
+  # @param room_id     [Integer]
+  # @param body        [String] message body
   # @param self_unread [Boolean] Whether to add the added message as unread by looking at it from myself
   #
   # @yield [response_body, response_header] if block was given, return response body and response header through block arguments

@@ -24,8 +24,8 @@ describe ChatWork::Message do
   describe ".create", type: :api do
     subject { ChatWork::Message.create(room_id: room_id, body: body, self_unread: self_unread, &block) }
 
-    let(:room_id) { 123 }
-    let(:body)    { "Hello ChatWork!" }
+    let(:room_id)     { 123 }
+    let(:body)        { "Hello ChatWork!" }
     let(:self_unread) { false }
 
     before do
