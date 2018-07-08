@@ -22,10 +22,11 @@ describe ChatWork::Message do
   end
 
   describe ".create", type: :api do
-    subject { ChatWork::Message.create(room_id: room_id, body: body, &block) }
+    subject { ChatWork::Message.create(room_id: room_id, body: body, self_unread: self_unread, &block) }
 
     let(:room_id) { 123 }
     let(:body)    { "Hello ChatWork!" }
+    let(:self_unread) { false }
 
     before do
       stub_chatwork_request(:post, "/rooms/#{room_id}/messages", "/rooms/{room_id}/messages")
