@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.9.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.10.0...master)
+
+## v0.10.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.9.0...v0.10.0)
+
+* Add file upload method
+  * https://github.com/asonas/chatwork-ruby/pull/55
 
 ## v0.9.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.8.0...v0.9.0)
