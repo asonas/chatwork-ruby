@@ -65,5 +65,36 @@ module ChatWork
     def self.find(room_id:, file_id:, create_download_url: nil, &block)
       ChatWork.client.find_file(room_id: room_id, file_id: file_id, create_download_url: create_download_url, &block)
     end
+
+    # Upload a new file to room
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-files
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
+    #
+    # @param room_id [Integer]
+    # @param file    [Faraday::UploadIO]
+    # @param message [String]
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
+    # @return [Hashie::Mash]
+    #
+    # @example how to upload a file
+    #   ChatWork::File.create(room_id: 11111111, file: Faraday::UploadIO.new("/path/to/file.txt", "text/plain"), message: "Test")
+    #
+    # @example response format
+    #   {
+    #     "file_id": 1234
+    #   }
+    #
+    def self.create(room_id:, file:, message: nil, &block)
+      ChatWork.client.create_file(room_id: room_id, file: file, message: message, &block)
+    end
+
+    class << self
+      alias_method :upload, :create
+    end
   end
 end

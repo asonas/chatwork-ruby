@@ -34,4 +34,18 @@ describe ChatWork::File do
       it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/files/{file_id}"
     end
   end
+
+  describe ".create", type: :api do
+    subject { ChatWork::File.create(room_id: room_id, file: file, message: message, &block) }
+
+    before do
+      stub_chatwork_request(:post, "/rooms/#{room_id}/files", "/rooms/{room_id}/files")
+    end
+
+    let(:room_id) { 123 }
+    let(:file)    { Faraday::UploadIO.new("#{spec_dir}/data/upload.txt", "text/plain") }
+    let(:message) { "I attached comment to chat." }
+
+    it_behaves_like :a_chatwork_api, :post, "/rooms/{room_id}/files"
+  end
 end

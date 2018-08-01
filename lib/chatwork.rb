@@ -1,5 +1,6 @@
 require "chatwork/version"
 require "hashie"
+require "faraday"
 
 module ChatWork
   autoload :BaseClient,         "chatwork/base_client"
@@ -16,6 +17,7 @@ module ChatWork
   autoload :Me,                 "chatwork/me"
   autoload :Member,             "chatwork/member"
   autoload :Message,            "chatwork/message"
+  autoload :Multipart,          "chatwork/multipart"
   autoload :MyStatus,           "chatwork/my_status"
   autoload :MyTask,             "chatwork/my_task"
   autoload :OAuthClient,        "chatwork/oauth_client"
@@ -30,6 +32,10 @@ module ChatWork
   @access_token = nil
   @client_id = nil
   @client_secret = nil
+
+  Faraday::Request.register_middleware(
+    chatwork_multipart: -> { ChatWork::Multipart },
+  )
 
   class << self
     # @!attribute [r] api_base

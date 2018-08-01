@@ -3,8 +3,16 @@
 require "bundler/setup"
 require "chatwork"
 require "dotenv"
+require "faraday_curl"
 
 Dotenv.load
+
+logger = Logger.new(STDOUT)
+
+@client = ChatWork::Client.new(api_key: ENV["CHATWORK_API_TOKEN"])
+connection = @client.instance_variable_get(:@conn)
+connection.request :curl, logger, :debug
+connection.response :logger, logger, bodies: true
 
 require "pry"
 Pry.start
