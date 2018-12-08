@@ -1,26 +1,26 @@
 sudo: false
 language: ruby
 rvm:
-- 2.1
-- 2.2
-- 2.3
-- 2.4.1
-- 2.5.0
-- ruby-head
+  - 2.1
+  - 2.2
+  - 2.3
+  - 2.4.1
+  - 2.5.0
+  - ruby-head
 bundler_args: "--jobs=2"
 cache: bundler
 before_install:
-- gem update --system --no-document
-- gem install bundler -v 1.16.1 --no-document
+  - gem update --system --no-document
+  - gem install bundler -v 1.16.1 --no-document
 script:
-- bundle exec rake spec
-- bundle exec rubocop
+  - bundle exec rake spec
+  - bundle exec rubocop
 branches:
   only:
-  - master
+    - master
 matrix:
   allow_failures:
-  - rvm: ruby-head
+    - rvm: ruby-head
 env:
   global:
     secure: Ntdheemdu1GavPR/3kPfQg1tR13FTP0jE9KxsSKcG32VbIzM69l22OXXwYttFexMhA1dMNytv5bKGIszeiO+YjwzDXkcDHF7ZULc24epsGCOVfNax4g47Q+Lgt2kpAsx8V/8/SIpK7VeBhc2nPvhAKPjTZ8ddN2gLHk4wifLRFA=
