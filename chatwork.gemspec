@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "hashie"
 
   spec.add_development_dependency "activesupport"
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler", ">= 1.3"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "dotenv"
   spec.add_development_dependency "faraday_curl"
