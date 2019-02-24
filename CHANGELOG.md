@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.10.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.11.0...master)
+
+## v0.11.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.10.0...v0.11.0)
+
+* Support task complete/incomplete api
+  * https://github.com/asonas/chatwork-ruby/pull/64
 
 ## v0.10.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.9.0...v0.10.0)
