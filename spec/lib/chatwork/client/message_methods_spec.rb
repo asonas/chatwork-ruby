@@ -25,7 +25,7 @@ describe ChatWork::Client::MessageMethods do
     subject { client.create_message(room_id: room_id, body: body, self_unread: self_unread, &block) }
 
     let(:room_id)     { 123 }
-    let(:body)        { "Hello ChatWork!" }
+    let(:body)        { "Hello Chatwork!" }
     let(:self_unread) { false }
 
     before do
@@ -79,7 +79,7 @@ describe ChatWork::Client::MessageMethods do
 
     let(:room_id)    { 123 }
     let(:message_id) { "101" }
-    let(:body)       { "Hello ChatWork!" }
+    let(:body)       { "Hello Chatwork!" }
 
     before do
       stub_chatwork_request(:put, "/rooms/#{room_id}/messages/#{message_id}", "/rooms/{room_id}/messages/{message_id}")
