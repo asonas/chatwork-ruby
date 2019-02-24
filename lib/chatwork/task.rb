@@ -101,5 +101,28 @@ module ChatWork
     def self.find(room_id:, task_id:, &block)
       ChatWork.client.find_task(room_id: room_id, task_id: task_id, &block)
     end
+
+    # Update task completion status
+    #
+    # @see http://developer.chatwork.com/ja/endpoint_rooms.html#PUT-rooms-room_id-tasks-task_id-status
+    # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
+    #
+    # @param room_id [Integer]
+    # @param task_id [Integer]
+    # @param body [String] Task completion status (e.g. `open`, `done`)
+    #
+    # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
+    # @yieldparam response_body [Hashie::Mash] response body
+    # @yieldparam response_header [Hash<String, String>] response header (e.g. X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset)
+    #
+    # @return [Hashie::Mash]
+    #
+    # @example response format
+    #   {
+    #     "task_id": 1234
+    #   }
+    def self.update_status(room_id:, task_id:, body:, &block)
+      ChatWork.client.update_task_status(room_id: room_id, task_id: task_id, body: body, &block)
+    end
   end
 end

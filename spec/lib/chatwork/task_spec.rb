@@ -77,4 +77,25 @@ describe ChatWork::Task do
 
     it_behaves_like :a_chatwork_api, :get, "/rooms/{room_id}/tasks/{task_id}"
   end
+
+  describe ".update_status", type: :api do
+    subject do
+      ChatWork::Task.update_status(
+        room_id: room_id,
+        task_id: task_id,
+        body:    body,
+        &block
+      )
+    end
+
+    let(:room_id) { 123 }
+    let(:task_id) { 3 }
+    let(:body)    { "done" }
+
+    before do
+      stub_chatwork_request(:put, "/rooms/#{room_id}/tasks/#{task_id}/status", "/rooms/{room_id}/tasks/{task_id}/status")
+    end
+
+    it_behaves_like :a_chatwork_api, :put, "/rooms/{room_id}/tasks/{task_id}/status"
+  end
 end
