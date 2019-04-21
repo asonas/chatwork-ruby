@@ -50,6 +50,7 @@ module ChatWork::Client::TaskMethods
   # @param body    [String] Task description
   # @param to_ids [Array<Integer>, String] Account ID of the person/people responsible to complete the task
   # @param limit  [Time, Integer] When the task is due
+  # @param limit_type [String] Type of task deadline (e.g. `none`, `date`, `time`)
   #
   # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
   # @yieldparam response_body [Hashie::Mash] response body
@@ -61,10 +62,11 @@ module ChatWork::Client::TaskMethods
   #   {
   #     "task_ids": [123,124]
   #   }
-  def create_task(room_id:, body:, to_ids:, limit: nil, &block)
+  def create_task(room_id:, body:, to_ids:, limit: nil, limit_type: nil, &block)
     params = {
       body:   body,
       to_ids: Array(to_ids).join(","),
+      limit_type: limit_type,
     }
     params[:limit] = limit.to_i if limit
 
