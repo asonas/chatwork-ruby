@@ -35,7 +35,8 @@ module ChatWork
     #       "message_id": "13",
     #       "body": "buy milk",
     #       "limit_time": 1384354799,
-    #       "status": "open"
+    #       "status": "open",
+    #       "limit_type": "date"
     #     }
     #   ]
     def self.get(room_id:, account_id:, assigned_by_account_id: nil, status: nil, &block)
@@ -47,10 +48,11 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-tasks
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @param room_id [Integer]
-    # @param body    [String] Task description
-    # @param to_ids [Array<Integer>, String] Account ID of the person/people responsible to complete the task
-    # @param limit  [Time, Integer] When the task is due
+    # @param room_id    [Integer]
+    # @param body       [String] Task description
+    # @param to_ids     [Array<Integer>, String] Account ID of the person/people responsible to complete the task
+    # @param limit      [Time, Integer] When the task is due
+    # @param limit_type [String] Type of task deadline (e.g. `none`, `date`, `time`)
     #
     # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
     # @yieldparam response_body [Hashie::Mash] response body
@@ -62,8 +64,8 @@ module ChatWork
     #   {
     #     "task_ids": [123,124]
     #   }
-    def self.create(room_id:, body:, to_ids:, limit: nil, &block)
-      ChatWork.client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit, &block)
+    def self.create(room_id:, body:, to_ids:, limit: nil, limit_type: nil, &block)
+      ChatWork.client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit, limit_type: limit_type, &block)
     end
 
     # Get information about the specified task
@@ -96,7 +98,8 @@ module ChatWork
     #     "message_id": "13",
     #     "body": "buy milk",
     #     "limit_time": 1384354799,
-    #     "status": "open"
+    #     "status": "open",
+    #     "limit_type": "date"
     #   }
     def self.find(room_id:, task_id:, &block)
       ChatWork.client.find_task(room_id: room_id, task_id: task_id, &block)

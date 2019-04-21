@@ -8,3 +8,6 @@ require: rubocop-rspec
 # module name is `ChatWork`, but I want to use `chatwork` as filename
 RSpec/FilePath:
   Enabled: false
+
+Metrics/ParameterLists:
+  Max: 6
