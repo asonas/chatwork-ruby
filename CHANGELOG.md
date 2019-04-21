@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.11.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.0...master)
+
+## v0.12.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.11.0...v0.12.0)
+
+* Add 'limit_type' to task read/write API.
+  * https://github.com/asonas/chatwork-ruby/pull/66
 
 ## v0.11.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.10.0...v0.11.0)
