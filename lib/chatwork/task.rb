@@ -51,6 +51,7 @@ module ChatWork
     # @param body    [String] Task description
     # @param to_ids [Array<Integer>, String] Account ID of the person/people responsible to complete the task
     # @param limit  [Time, Integer] When the task is due
+    # @param limit_type [String] Type of task deadline (e.g. `none`, `date`, `time`)
     #
     # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
     # @yieldparam response_body [Hashie::Mash] response body
@@ -62,8 +63,8 @@ module ChatWork
     #   {
     #     "task_ids": [123,124]
     #   }
-    def self.create(room_id:, body:, to_ids:, limit: nil, &block)
-      ChatWork.client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit, &block)
+    def self.create(room_id:, body:, to_ids:, limit: nil, limit_type: nil, &block)
+      ChatWork.client.create_task(room_id: room_id, body: body, to_ids: to_ids, limit: limit, limit_type: limit_type, &block)
     end
 
     # Get information about the specified task
