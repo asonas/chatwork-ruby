@@ -35,7 +35,8 @@ module ChatWork
     #       "message_id": "13",
     #       "body": "buy milk",
     #       "limit_time": 1384354799,
-    #       "status": "open"
+    #       "status": "open",
+    #       "limit_type": "date"
     #     }
     #   ]
     def self.get(room_id:, account_id:, assigned_by_account_id: nil, status: nil, &block)
@@ -97,7 +98,8 @@ module ChatWork
     #     "message_id": "13",
     #     "body": "buy milk",
     #     "limit_time": 1384354799,
-    #     "status": "open"
+    #     "status": "open",
+    #     "limit_type": "date"
     #   }
     def self.find(room_id:, task_id:, &block)
       ChatWork.client.find_task(room_id: room_id, task_id: task_id, &block)
