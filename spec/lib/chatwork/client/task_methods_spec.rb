@@ -25,19 +25,19 @@ describe ChatWork::Client::TaskMethods do
   describe "#create_task", type: :api do
     subject do
       client.create_task(
-        room_id: room_id,
-        body:    body,
-        to_ids:  to_ids,
-        limit:   limit,
+        room_id:    room_id,
+        body:       body,
+        to_ids:     to_ids,
+        limit:      limit,
         limit_type: limit_type,
         &block
       )
     end
 
-    let(:room_id) { 123 }
-    let(:body)    { "Buy milk" }
-    let(:to_ids)  { "1,3,6" }
-    let(:limit)   { "1385996399" }
+    let(:room_id)    { 123 }
+    let(:body)       { "Buy milk" }
+    let(:to_ids)     { "1,3,6" }
+    let(:limit)      { "1385996399" }
     let(:limit_type) { "time" }
 
     before do

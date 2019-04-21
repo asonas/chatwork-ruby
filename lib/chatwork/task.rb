@@ -47,10 +47,10 @@ module ChatWork
     # @see http://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-tasks
     # @see http://download.chatwork.com/ChatWork_API_Documentation.pdf
     #
-    # @param room_id [Integer]
-    # @param body    [String] Task description
-    # @param to_ids [Array<Integer>, String] Account ID of the person/people responsible to complete the task
-    # @param limit  [Time, Integer] When the task is due
+    # @param room_id    [Integer]
+    # @param body       [String] Task description
+    # @param to_ids     [Array<Integer>, String] Account ID of the person/people responsible to complete the task
+    # @param limit      [Time, Integer] When the task is due
     # @param limit_type [String] Type of task deadline (e.g. `none`, `date`, `time`)
     #
     # @yield [response_body, response_header] if block was given, return response body and response header through block arguments
