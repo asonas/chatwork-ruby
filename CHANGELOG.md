@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.1...master)
+
+## v0.12.1
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.0...v0.12.1)
+
+* Fixed. set status code and body when unexpected error is occurred
+  * https://github.com/asonas/chatwork-ruby/pull/68
 
 ## v0.12.0
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.11.0...v0.12.0)
