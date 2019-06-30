@@ -74,4 +74,18 @@ describe ChatWork::ChatWorkError do
       its(:error_response)    { should eq ["Invalid API Token"] }
     end
   end
+
+  describe ChatWork::APIConnectionError do
+    describe ".faraday_error" do
+      subject { ChatWork::APIConnectionError.faraday_error(error) }
+
+      let(:error) do
+        Faraday::ResourceNotFound.new(status: 404, body: "Not found")
+      end
+
+      its(:original_error) { should eq error }
+      its(:status)         { should eq 404 }
+      its(:error_response) { should eq "Not found" }
+    end
+  end
 end

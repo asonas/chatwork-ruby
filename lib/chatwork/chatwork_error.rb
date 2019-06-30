@@ -40,7 +40,12 @@ module ChatWork
 
     def initialize(message, original_error = nil)
       @original_error = original_error
-      super(message)
+
+      if original_error && original_error.response.is_a?(Hash)
+        super(message, original_error.response[:status], original_error.response[:body])
+      else
+        super(message)
+      end
     end
   end
 
