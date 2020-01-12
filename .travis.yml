@@ -8,6 +8,9 @@ rvm:
   - 2.6
   - 2.7
   - ruby-head
+gemfile:
+  - gemfiles/faraday_0.gemfile
+  - gemfiles/faraday_1.gemfile
 bundler_args: "--jobs=2"
 cache: bundler
 before_install:
@@ -18,9 +21,13 @@ script:
 branches:
   only:
     - master
-matrix:
+jobs:
   allow_failures:
     - rvm: ruby-head
+  exclude:
+    # faraday v1.0+ requires Ruby 2.3+
+    - rvm: 2.2
+      gemfile: gemfiles/faraday_1.gemfile
   include:
     - rvm: 2.6
       env: RSPEC_RUBYOPT="--jit"
