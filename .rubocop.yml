@@ -5,6 +5,16 @@ inherit_gem:
 
 require: rubocop-rspec
 
+AllCops:
+  Exclude:
+    - 'gemfiles/vendor/**/*'
+
+    # c.f. https://github.com/rubocop-hq/rubocop/blob/v0.79.0/config/default.yml#L60-L64
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
+
 # module name is `ChatWork`, but I want to use `chatwork` as filename
 RSpec/FilePath:
   Enabled: false
