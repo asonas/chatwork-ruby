@@ -14,5 +14,5 @@ connection = @client.instance_variable_get(:@conn)
 connection.request :curl, logger, :debug
 connection.response :logger, logger, bodies: true
 
-require "pry"
-Pry.start
+require "irb"
+IRB.start
