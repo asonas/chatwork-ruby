@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.1...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.2...master)
+
+## v0.12.2
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.1...v0.12.2)
+
+* Support faraday v1.0
+  * https://github.com/asonas/chatwork-ruby/pull/70
 
 ## v0.12.1
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.0...v0.12.1)
