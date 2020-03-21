@@ -6,6 +6,3 @@ gemspec path: "../"
 eval_gemfile "#{__dir__}/common.gemfile"
 
 gem "faraday", "~> 1.0"
-
-# Remove following after https://github.com/lostisland/faraday_middleware/pull/196 is released
-gem "faraday_middleware", github: "lostisland/faraday_middleware", branch: "master"
