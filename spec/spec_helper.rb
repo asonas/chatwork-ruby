@@ -17,7 +17,6 @@ require "chatwork"
 require "rspec-parameterized"
 require "rspec/its"
 require "webmock/rspec"
-require "pry"
 require "active_support/all"
 
 begin
