@@ -38,6 +38,9 @@ jobs:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
 
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+
     steps:
       - uses: actions/checkout@v2
         with:
