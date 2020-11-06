@@ -26,8 +26,6 @@ jobs:
 
       matrix:
         ruby:
-          - ruby:2.2
-          - ruby:2.3
           - ruby:2.4
           - ruby:2.5
           - ruby:2.6
@@ -36,10 +34,6 @@ jobs:
         gemfile:
           - gemfiles/faraday_0.gemfile
           - gemfiles/faraday_1.gemfile
-        exclude:
-          # faraday v1.0+ requires Ruby 2.3+
-          - ruby: ruby:2.2
-            gemfile: gemfiles/faraday_1.gemfile
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
