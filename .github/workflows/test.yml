@@ -12,6 +12,9 @@ on:
   schedule:
     - cron: "0 10 * * 5" # JST 19:00 (Fri)
 
+env:
+  RUBYOPT: -EUTF-8
+
 jobs:
   test:
     runs-on: ubuntu-latest
