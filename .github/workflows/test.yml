@@ -32,14 +32,14 @@ jobs:
           - ruby:2.7
           - rubylang/ruby:master-nightly-bionic
         gemfile:
-          - gemfiles/faraday_0.gemfile
-          - gemfiles/faraday_1.gemfile
+          - faraday_0
+          - faraday_1
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
 
     env:
-      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+      BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
 
     steps:
       - uses: actions/checkout@v2
