@@ -43,8 +43,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: "true"
+
+      - run: git submodule update --init
 
       - name: Cache vendor/bundle
         uses: actions/cache@v1
