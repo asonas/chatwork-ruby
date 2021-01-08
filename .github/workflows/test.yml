@@ -30,6 +30,7 @@ jobs:
           - ruby:2.5
           - ruby:2.6
           - ruby:2.7
+          - ruby:3.0
           - rubylang/ruby:master-nightly-bionic
         gemfile:
           - faraday_0
@@ -75,6 +76,7 @@ jobs:
 
       - run: bundle exec rubocop
         continue-on-error: ${{ matrix.allow_failures == 'true' }}
+        if: matrix.ruby < 'ruby:3.0' # FIXME: remove this after upgrade rubocop
 
   finish:
     needs: test
