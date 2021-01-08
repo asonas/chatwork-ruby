@@ -76,6 +76,7 @@ jobs:
 
       - run: bundle exec rubocop
         continue-on-error: ${{ matrix.allow_failures == 'true' }}
+        if: matrix.ruby < 'ruby:3.0' # FIXME: remove this after upgrade rubocop
 
   finish:
     needs: test
