@@ -12,6 +12,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/asonas/chatwork-ruby"
   spec.license       = "MIT"
 
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/blob/master/CHANGELOG.md"
+  spec.metadata["rubygems_mfa_required"] = "true"
+
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables   = spec.files.grep(%r{^exe/}) {|f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
