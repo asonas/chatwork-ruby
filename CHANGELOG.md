@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.2...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.3...master)
+
+## v0.12.3
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.2...v0.12.3)
+
+* Enable MFA requirement for gem releasing
+  * https://github.com/asonas/chatwork-ruby/pull/75
 
 ## v0.12.2
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.1...v0.12.2)
