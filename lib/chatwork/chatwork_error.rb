@@ -68,10 +68,10 @@ module ChatWork
     end
 
     def self.from_www_authenticate(www_authenticate:, status:, error_response:)
-      www_authenticate =~ /error="([^\"]+)"/
+      www_authenticate =~ /error="([^"]+)"/
       error = Regexp.last_match(1)
 
-      www_authenticate =~ /error_description="([^\"]+)"/
+      www_authenticate =~ /error_description="([^"]+)"/
       error_description = Regexp.last_match(1)
 
       AuthenticateError.new(
