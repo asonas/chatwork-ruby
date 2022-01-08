@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.3...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v1.0.0...master)
+
+## v1.0.0
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.3...v1.0.0)
+
+* :bomb: **[BREAKING CHANGE]** Support faraday v2+ and drop support ruby < 2.6
+  * https://github.com/asonas/chatwork-ruby/pull/78
 
 ## v0.12.3
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v0.12.2...v0.12.3)
