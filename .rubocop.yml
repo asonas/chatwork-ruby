@@ -18,9 +18,27 @@ AllCops:
     - 'vendor/**/*'
     - '.git/**/*'
 
-# module name is `ChatWork`, but I want to use `chatwork` as filename
-RSpec/FilePath:
+Layout/HashAlignment:
+  EnforcedColonStyle: table
+
+Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: false
 
 Metrics/ParameterLists:
   Max: 6
+
+# module name is `ChatWork`, but I want to use `chatwork` as filename
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/SharedExamples:
+  Enabled: false
+
+Style/KeywordParametersOrder:
+  Enabled: false
