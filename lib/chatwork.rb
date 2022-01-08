@@ -1,6 +1,7 @@
 require "chatwork/version"
 require "hashie"
 require "faraday"
+require "faraday/mashify"
 
 module ChatWork
   autoload :BaseClient,         "chatwork/base_client"
