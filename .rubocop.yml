@@ -6,6 +6,9 @@ inherit_gem:
 require: rubocop-rspec
 
 AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 2.6
   Exclude:
     - 'gemfiles/vendor/**/*'
 
