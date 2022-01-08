@@ -43,6 +43,7 @@ describe ChatWork do
 
       let(:test_token) { "chatwork_test_token" }
       before { ENV["CHATWORK_API_TOKEN"] = test_token }
+
       it { is_expected.to eq test_token }
     end
   end
@@ -59,6 +60,7 @@ describe ChatWork do
 
       let(:test_token) { "chatwork_test_token" }
       before { ENV["CHATWORK_ACCESS_TOKEN"] = test_token }
+
       it { is_expected.to eq test_token }
     end
   end
