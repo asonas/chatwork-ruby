@@ -13,7 +13,7 @@ describe ChatWork::OAuthClient::TokenMethods do
     context "when successful" do
       before do
         stub_request(:post, "https://oauth.chatwork.com/token").
-          with(body: { "grant_type" => "refresh_token", "refresh_token" => refresh_token },
+          with(body:    { "grant_type" => "refresh_token", "refresh_token" => refresh_token },
                headers: { "Authorization" => "Basic #{signature}", "Content-Type" => "application/x-www-form-urlencoded" }).
           to_return(status: 200, body: token.to_json, headers: { "Content-Type" => "application/json" })
       end
@@ -38,7 +38,7 @@ describe ChatWork::OAuthClient::TokenMethods do
     context "when failure" do
       before do
         stub_request(:post, "https://oauth.chatwork.com/token").
-          with(body: { "grant_type" => "refresh_token", "refresh_token" => refresh_token },
+          with(body:    { "grant_type" => "refresh_token", "refresh_token" => refresh_token },
                headers: { "Authorization" => "Basic #{signature}", "Content-Type" => "application/x-www-form-urlencoded" }).
           to_return(status: 401, body: body.to_json, headers: { "Content-Type" => "application/json" })
       end

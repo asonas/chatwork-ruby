@@ -65,8 +65,8 @@ module ChatWork::Client::TaskMethods
   #   }
   def create_task(room_id:, body:, to_ids:, limit: nil, limit_type: nil, &block)
     params = {
-      body:   body,
-      to_ids: Array(to_ids).join(","),
+      body:       body,
+      to_ids:     Array(to_ids).join(","),
       limit_type: limit_type,
     }
     params[:limit] = limit.to_i if limit

@@ -4,10 +4,10 @@ RSpec.shared_context :api_context, type: :api do
 
   let(:response_headers) do
     {
-      "Content-Type"          => "application/json",
-      "X-RateLimit-Limit"     => ratelimit_limit,
+      "Content-Type" => "application/json",
+      "X-RateLimit-Limit" => ratelimit_limit,
       "X-RateLimit-Remaining" => ratelimit_remaining,
-      "X-RateLimit-Reset"     => ratelimit_reset,
+      "X-RateLimit-Reset" => ratelimit_reset,
     }
   end
 
