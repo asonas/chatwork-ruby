@@ -23,12 +23,6 @@ describe ChatWork do
 
       it { should eq("https://test.example.com/") }
     end
-
-    describe "#api_base" do
-      subject { super().api_base }
-
-      it { should eq("https://test.example.com/") }
-    end
   end
 
   describe "#api_key" do
