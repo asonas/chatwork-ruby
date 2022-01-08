@@ -41,7 +41,7 @@ module ChatWork
           end
 
         begin
-          response = @conn.__send__(method, @api_version + url, hash_compact(args))
+          response = @conn.__send__(method, @api_version + url, args.compact)
         rescue *faraday_errors => e
           raise ChatWork::APIConnectionError.faraday_error(e)
         end
