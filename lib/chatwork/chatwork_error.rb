@@ -21,8 +21,7 @@ module ChatWork
       APIConnectionError.new("Invalid response #{body.to_hash} (status: #{status})")
     end
 
-    attr_reader :status
-    attr_reader :error_response
+    attr_reader :status, :error_response
 
     def initialize(message, status = nil, error_response = nil)
       @status = status
