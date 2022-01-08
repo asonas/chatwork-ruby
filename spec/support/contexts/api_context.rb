@@ -4,10 +4,10 @@ RSpec.shared_context :api_context, type: :api do
 
   let(:response_headers) do
     {
-      "Content-Type"          => "application/json",
-      "X-RateLimit-Limit"     => ratelimit_limit,
+      "Content-Type" => "application/json",
+      "X-RateLimit-Limit" => ratelimit_limit,
       "X-RateLimit-Remaining" => ratelimit_remaining,
-      "X-RateLimit-Reset"     => ratelimit_reset,
+      "X-RateLimit-Reset" => ratelimit_reset,
     }
   end
 
@@ -30,7 +30,7 @@ RSpec.shared_context :api_context, type: :api do
     unless query_example.empty?
       case expected_verb
       when :get, :delete
-        query_string = "?" + query_example.to_query
+        query_string = "?#{query_example.to_query}"
       when :post, :put
         request_options[:headers]["Content-Type"] = "application/x-www-form-urlencoded"
         request_options[:body] = query_example.transform_values(&:to_s)

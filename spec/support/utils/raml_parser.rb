@@ -33,7 +33,7 @@ module RamlParser
     nil
   end
 
-  def self.find_query_parameter_example(verb, path)
+  def self.find_query_parameter_example(verb, path) # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
     resource = find_resource(verb, path)
     return {} unless resource
 

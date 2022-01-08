@@ -21,8 +21,7 @@ module ChatWork
       APIConnectionError.new("Invalid response #{body.to_hash} (status: #{status})")
     end
 
-    attr_reader :status
-    attr_reader :error_response
+    attr_reader :status, :error_response
 
     def initialize(message, status = nil, error_response = nil)
       @status = status
@@ -69,10 +68,10 @@ module ChatWork
     end
 
     def self.from_www_authenticate(www_authenticate:, status:, error_response:)
-      www_authenticate =~ /error="([^\"]+)"/
+      www_authenticate =~ /error="([^"]+)"/
       error = Regexp.last_match(1)
 
-      www_authenticate =~ /error_description="([^\"]+)"/
+      www_authenticate =~ /error_description="([^"]+)"/
       error_description = Regexp.last_match(1)
 
       AuthenticateError.new(

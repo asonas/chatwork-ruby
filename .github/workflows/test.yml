@@ -72,9 +72,8 @@ jobs:
           flag-name: run-${{ matrix.ruby }}-${{ matrix.gemfile }}
           parallel: true
 
-      # TODO: Enable after rubocop is upgraded
-      # - run: bundle exec rubocop
-      #   continue-on-error: ${{ matrix.allow_failures == 'true' }}
+      - run: bundle exec rubocop
+        continue-on-error: ${{ matrix.allow_failures == 'true' }}
 
   finish:
     needs: test
