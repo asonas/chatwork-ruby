@@ -1,6 +1,8 @@
 require "chatwork/version"
 require "hashie"
 require "faraday"
+require "faraday/mashify"
+require "faraday/multipart"
 
 module ChatWork
   autoload :BaseClient,         "chatwork/base_client"
@@ -34,7 +36,7 @@ module ChatWork
   @client_secret = nil
 
   Faraday::Request.register_middleware(
-    chatwork_multipart: -> { ChatWork::Multipart },
+    chatwork_multipart: ChatWork::Multipart,
   )
 
   class << self

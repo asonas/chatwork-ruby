@@ -26,16 +26,13 @@ jobs:
 
       matrix:
         ruby:
-          - ruby:2.4
-          - ruby:2.5
           - ruby:2.6
           - ruby:2.7
           - ruby:3.0
           - ruby:3.1
           - rubylang/ruby:master-nightly-bionic
         gemfile:
-          - faraday_0
-          - faraday_1
+          - faraday_2
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"
@@ -75,9 +72,9 @@ jobs:
           flag-name: run-${{ matrix.ruby }}-${{ matrix.gemfile }}
           parallel: true
 
-      - run: bundle exec rubocop
-        continue-on-error: ${{ matrix.allow_failures == 'true' }}
-        if: matrix.ruby < 'ruby:3.0' # FIXME: remove this after upgrade rubocop
+      # TODO: Enable after rubocop is upgraded
+      # - run: bundle exec rubocop
+      #   continue-on-error: ${{ matrix.allow_failures == 'true' }}
 
   finish:
     needs: test
