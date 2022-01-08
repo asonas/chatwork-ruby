@@ -7,7 +7,7 @@ require "faraday_curl"
 
 Dotenv.load
 
-logger = Logger.new(STDOUT)
+logger = Logger.new($stdout)
 
 @client = ChatWork::Client.new(api_key: ENV["CHATWORK_API_TOKEN"])
 connection = @client.instance_variable_get(:@conn)
