@@ -17,7 +17,7 @@ module ChatWork
   end
 
   class EpiloguePart < ::Faraday::Parts::EpiloguePart
-    def initialize(boundary)
+    def initialize(boundary) # rubocop:disable Lint/MissingSuper
       # NOTE: ChatWork doesn't accepts ending "\r\n\r\n" of payload...
       # @part = "--#{boundary}--\r\n\r\n"
       @part = "--#{boundary}--\r\n"
