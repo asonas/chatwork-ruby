@@ -26,7 +26,7 @@ require "active_support/all"
 
 begin
   require "backport_dig"
-rescue LoadError # rubocop:disable Lint/HandleExceptions
+rescue LoadError # rubocop:disable Lint/SuppressedException
 end
 
 Dir["#{__dir__}/support/**/*.rb"].sort.each {|f| require f }
