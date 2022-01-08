@@ -34,8 +34,7 @@ jobs:
           - ruby:3.1
           - rubylang/ruby:master-nightly-bionic
         gemfile:
-          - faraday_0
-          - faraday_1
+          - faraday_2
         include:
           - ruby: rubylang/ruby:master-nightly-bionic
             allow_failures: "true"

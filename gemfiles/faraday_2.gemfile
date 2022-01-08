@@ -5,4 +5,4 @@ gemspec path: "../"
 
 eval_gemfile "#{__dir__}/common.gemfile"
 
-gem "faraday", "~> 1.0"
+gem "faraday", "~> 2.0"
