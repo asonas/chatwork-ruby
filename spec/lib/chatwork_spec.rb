@@ -14,6 +14,7 @@ describe ChatWork do
 
     it { should eq("https://api.chatwork.com/") }
   end
+
   describe "#api_base=" do
     before { ChatWork.api_base = "https://test.example.com/" }
 
