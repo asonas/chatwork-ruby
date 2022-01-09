@@ -33,16 +33,9 @@ module ChatWork
 
     Faraday::Connection::METHODS.each do |method|
       define_method(method) do |url, args = {}, &block|
-        faraday_errors =
-          if Gem::Version.create(Faraday::VERSION) >= Gem::Version.create("1.0.0")
-            [Faraday::ClientError, Faraday::ServerError]
-          else
-            [Faraday::Error::ClientError]
-          end
-
         begin
           response = @conn.__send__(method, @api_version + url, args.compact)
-        rescue *faraday_errors => e
+        rescue Faraday::ClientError, Faraday::ServerError => e
           raise ChatWork::APIConnectionError.faraday_error(e)
         end
         payload = handle_response(response)
