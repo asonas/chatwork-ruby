@@ -46,7 +46,7 @@ jobs:
           submodules: "true"
 
       - name: Cache vendor/bundle
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         id: cache_gem
         with:
           path: vendor/bundle
