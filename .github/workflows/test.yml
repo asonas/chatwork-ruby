@@ -30,12 +30,8 @@ jobs:
           - ruby:2.7
           - ruby:3.0
           - ruby:3.1
-          - rubylang/ruby:master-nightly-bionic
         gemfile:
           - faraday_2
-        include:
-          - ruby: rubylang/ruby:master-nightly-bionic
-            allow_failures: "true"
 
     env:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
@@ -53,17 +49,14 @@ jobs:
           key: v1-gem-${{ runner.os }}-${{ matrix.ruby }}-${{ github.sha }}
           restore-keys: |
             v1-gem-${{ runner.os }}-${{ matrix.ruby }}-
-        continue-on-error: ${{ matrix.allow_failures == 'true' }}
 
       - name: bundle update
         run: |
           set -xe
           bundle config path vendor/bundle
           bundle update --jobs $(nproc) --retry 3
-        continue-on-error: ${{ matrix.allow_failures == 'true' }}
 
       - run: bundle exec rspec
-        continue-on-error: ${{ matrix.allow_failures == 'true' }}
 
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@master
@@ -73,7 +66,6 @@ jobs:
           parallel: true
 
       - run: bundle exec rubocop
-        continue-on-error: ${{ matrix.allow_failures == 'true' }}
 
   finish:
     needs: test
