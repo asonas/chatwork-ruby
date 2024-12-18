@@ -5,6 +5,8 @@
 ## v1.0.1
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v1.0.1...v1.0.0)
 
+* Removed compatibility with old faraday
+  * https://github.com/asonas/chatwork-ruby/pull/80
 * Fix NoMethodError: undefined method `mime_type=' for ChatWork::Multipart:Class with faraday-multipart v1.1.0+
   * https://github.com/asonas/chatwork-ruby/pull/90
 
