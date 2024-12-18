@@ -1,7 +1,5 @@
 module ChatWork
   class Multipart < ::Faraday::Multipart::Middleware
-    self.mime_type = "multipart/form-data".freeze
-
     def create_multipart(env, params)
       original_body = super(env, params)
 
