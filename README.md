@@ -3,7 +3,7 @@
 Ruby bindings of ChatWork API
 
 [![Gem Version](https://badge.fury.io/rb/chatwork.svg)](https://badge.fury.io/rb/chatwork)
-[![Build Status](https://github.com/asonas/chatwork-ruby/workflows/test/badge.svg?branch=master)](https://github.com/asonas/chatwork-ruby/actions?query=workflow%3Atest)
+[![test](https://github.com/asonas/chatwork-ruby/actions/workflows/test.yml/badge.svg)](https://github.com/asonas/chatwork-ruby/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/asonas/chatwork-ruby/badge.svg?branch=master)](https://coveralls.io/github/asonas/chatwork-ruby)
 
 ## Installation
