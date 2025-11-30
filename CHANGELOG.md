@@ -1,6 +1,12 @@
 # Change Log
 ## Unreleased
-[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v1.0.0...master)
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v1.0.2...master)
+
+## v1.0.2
+[Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v1.0.1...v1.0.2)
+
+* Release gem from GitHub Actions
+  * https://github.com/asonas/chatwork-ruby/pull/93
 
 ## v1.0.1
 [Full Changelog](https://github.com/asonas/chatwork-ruby/compare/v1.0.1...v1.0.0)
