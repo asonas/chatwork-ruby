@@ -6,6 +6,8 @@ updates:
     directory: /
     schedule:
       interval: monthly
+      timezone: Asia/Tokyo
+      time: "05:00"
     cooldown:
       default-days: 7
     assignees:
