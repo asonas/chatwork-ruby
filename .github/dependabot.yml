@@ -10,5 +10,7 @@ updates:
       time: "05:00"
     cooldown:
       default-days: 7
+      exclude:
+        - ruby/setup-ruby
     assignees:
       - sue445
