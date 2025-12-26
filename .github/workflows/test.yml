@@ -60,6 +60,31 @@ jobs:
 
       - run: bundle exec rubocop
 
+  yard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: "true"
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+
+      - name: bundle update
+        run: |
+          set -xe
+          bundle config path vendor/bundle
+          bundle update --jobs $(nproc) --retry 3
+
+      - name: yard generating test
+        run: |
+          set -xe
+          bundle exec yard
+          ls -ld doc/
+
   finish:
     needs: test
     runs-on: ubuntu-latest
