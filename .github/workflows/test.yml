@@ -34,11 +34,11 @@ jobs:
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}.gemfile
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: "true"
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.336.0
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
@@ -64,11 +64,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           submodules: "true"
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.336.0
         with:
           ruby-version: ruby
           bundler-cache: true
